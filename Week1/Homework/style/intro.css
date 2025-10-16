@@ -1,0 +1,52 @@
+#intro-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#intro-button-container {
+  display: flex;
+  gap: 10px;
+}
+
+#intro-button-container button {
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#intro-button-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#reset-text-btn {
+  background-color: #6ea984;
+}
+
+#reset-text-btn:hover {
+  background-color: #0b4721;
+}
+
+#change-text-btn {
+  background-color: #74c2ce;
+}
+
+#change-text-btn:hover {
+  background-color: #0c525c;
+}
+
+#intro-profile {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
