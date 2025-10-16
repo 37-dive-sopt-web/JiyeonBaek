@@ -44,9 +44,20 @@
 }
 
 #intro-profile {
-  width: 200px;
-  height: 200px;
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 200px;
+  max-height: 200px;
   border-radius: 50%;
   margin-bottom: 20px;
   object-fit: cover;
+}
+
+@media (max-width: 860px) {
+  #intro-button-container{
+    align-items: center;
+  }
+  #intro .section-container{
+    flex-direction: column;
+  }
 }
