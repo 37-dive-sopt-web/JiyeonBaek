@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(0, 0, 0);
+  background-color: black;
   padding: 10px 40px;
   position: fixed;
   width: 100%;
@@ -32,7 +32,7 @@
 
 #profile-title h2 {
   font-size: 16px;
-  color: rgb(201, 247, 226);
+  color: var(--third-color);
 }
 
 #sns {

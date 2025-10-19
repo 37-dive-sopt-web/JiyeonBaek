@@ -5,6 +5,7 @@
 @import "about.css";
 @import "gallery.css";
 @import "footer.css";
+@import "theme.css";
 
 * {
   margin: 0;
@@ -21,19 +22,7 @@ html {
   padding-top: 150px;
 }
 
-#skills {
-  scroll-margin-top: 150px;
-}
-
-#about {
-  scroll-margin-top: 150px;
-}
-
-#gallery {
-  scroll-margin-top: 150px;
-}
-
-#message {
+#skills #about #gallery #message {
   scroll-margin-top: 150px;
 }
 
@@ -66,7 +55,7 @@ body {
 
 #intro {
   border-radius: 0 0 30px 30px;
-  background-color: #f8f9fa;
+  background-color: var(--senary-color);
 }
 
 .section-container {
@@ -77,16 +66,16 @@ body {
 
 .section h2 {
   font-size: 32px;
-  color: #333;
+  color: var(--nonary-color);
   margin-bottom: 10px;
 }
 
 .section-description {
   font-size: 18px;
-  color: #a3a3a3;
+  color: var(--denary-color);
 }
 
 /* 한마디 섹션 배경색*/
 #message {
-  background-color: #fff3e0;
+  background-color: var(--orange-color);
 }

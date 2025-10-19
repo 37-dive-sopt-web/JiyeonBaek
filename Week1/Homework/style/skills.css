@@ -1,5 +1,5 @@
 #skills {
-  background-color: #e3f2fd;
+  background-color: var(--sky-blue-color);
 }
 
 .skills-container {
@@ -10,13 +10,13 @@
 }
 
 .skill-chip {
-  background: #6ea984;
+  background: var(--primary-color);
   color: white;
   padding: 10px 20px;
   border-radius: 25px;
   font-size: 14px;
   font-weight: 500;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
   transition: all 0.3s ease;
   height: 40px;
   display: flex;
@@ -26,6 +26,6 @@
 
 .skill-chip:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  background: #385543;
+  box-shadow: var(--shadow-lg);
+  background: var(--primary-color-hover);
 }

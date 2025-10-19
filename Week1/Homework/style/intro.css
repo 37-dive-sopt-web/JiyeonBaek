@@ -22,25 +22,25 @@
 
 #intro-button-container button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
   font-size: 16px;
   font-weight: 600;
 }
 
 #reset-text-btn {
-  background-color: #6ea984;
+  background-color: var(--primary-color);
 }
 
 #reset-text-btn:hover {
-  background-color: #0b4721;
+  background-color: var(--primary-color-hover);
 }
 
 #change-text-btn {
-  background-color: #74c2ce;
+  background-color: var(--secondary-color);
 }
 
 #change-text-btn:hover {
-  background-color: #0c525c;
+  background-color: var(--secondary-color-hover);
 }
 
 #intro-profile {
@@ -53,11 +53,17 @@
   object-fit: cover;
 }
 
+#intro-profile:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-lg);
+}
+
 @media (max-width: 860px) {
-  #intro-button-container{
+  #intro-button-container {
     align-items: center;
   }
-  #intro .section-container{
+  #intro .section-container {
     flex-direction: column;
   }
 }
