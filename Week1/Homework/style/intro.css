@@ -12,9 +12,9 @@
 #intro-button-container button {
   color: white;
   padding: 10px 20px;
-  border-radius: 25px;
+  border-radius: var(--border-radius-xl);
   border: none;
-  font-size: 14px;
+  font-size: var(--font-size-sm);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -23,7 +23,7 @@
 #intro-button-container button:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
-  font-size: 16px;
+  font-size: var(--font-size-md);
   font-weight: 600;
 }
 

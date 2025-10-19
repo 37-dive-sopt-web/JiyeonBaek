@@ -50,7 +50,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 30px;
+  border-radius: var(--border-radius-xxl);
 }
 
 #intro {
@@ -65,13 +65,13 @@ body {
 }
 
 .section h2 {
-  font-size: 32px;
+  font-size: var(--font-size-xxxxl);
   color: var(--nonary-color);
   margin-bottom: 10px;
 }
 
 .section-description {
-  font-size: 18px;
+  font-size: var(--font-size-lg);
   color: var(--denary-color);
 }
 
