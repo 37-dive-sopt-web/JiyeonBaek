@@ -5,7 +5,7 @@ nav {
   position: sticky;
   top: 160px;
   height: 260px;
-  margin: 30px 0 30px 40px;
+  margin: 40px 0 40px 50px;
   border-radius: var(--border-radius-lg);
 }
 
@@ -43,4 +43,11 @@ nav ul li:last-child a:hover {
 
 nav ul li:not(:first-child):not(:last-child) a:hover {
   border-radius: var(--border-radius-sm);
+}
+
+@media (max-width: 800px) {
+  nav {
+    margin-left: 10px;
+    top: 140px;
+  }
 }

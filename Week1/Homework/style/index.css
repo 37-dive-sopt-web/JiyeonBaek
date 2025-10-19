@@ -22,7 +22,19 @@ html {
   padding-top: 150px;
 }
 
-#skills #about #gallery #message {
+#skills {
+  scroll-margin-top: 150px;
+}
+
+#about {
+  scroll-margin-top: 150px;
+}
+
+#gallery {
+  scroll-margin-top: 150px;
+}
+
+#message {
   scroll-margin-top: 150px;
 }
 
@@ -41,12 +53,15 @@ body {
 .content-area {
   flex: 1;
   overflow-y: auto;
+  min-width: 800px;
+  max-width: 1800;
+  margin: 0 auto;
 }
 
 /* 공통 섹션 */
 .section {
   padding: 40px 50px;
-  margin: 0 40px 40px 40px;
+  margin: 0 60px 40px 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,4 +93,24 @@ body {
 /* 한마디 섹션 배경색*/
 #message {
   background-color: var(--orange-color);
+}
+
+/* 반응형 */
+@media (max-width: 1200px) {
+  .content-area {
+    min-width: 600px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .content-area {
+    min-width: 320px;
+    max-width: 100%;
+  }
+
+  .section {
+    margin: 0 10px 40px 10px;
+    padding: 20px 30px;
+  }
 }
