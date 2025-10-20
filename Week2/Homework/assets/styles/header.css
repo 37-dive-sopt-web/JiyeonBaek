@@ -14,10 +14,12 @@ header {
 
 #header h1 {
   font-size: var(--font-size-3xl);
+  color: var(--tertiary-color);
   font-weight: 700;
 }
 
 #header p {
   font-size: var(--font-size-md);
+  color: var(--tertiary-color);
   font-weight: 500;
 }

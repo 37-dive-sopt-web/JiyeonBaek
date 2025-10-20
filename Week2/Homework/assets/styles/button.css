@@ -1,0 +1,21 @@
+#search-filter-form .filter-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+#search-filter-form button {
+  width: 100%;
+  padding: 14px 12px;
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  color: var(--primary-color);
+  background-color: var(--tertiary-color);
+  border-radius: var(--border-radius-lg);
+}
+
+#search-filter-form button:hover {
+  background-color: var(--primary-color);
+  color: var(--quinary-color);
+  transition: var(--transition-sm);
+}
