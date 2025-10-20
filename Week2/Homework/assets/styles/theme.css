@@ -1,0 +1,44 @@
+:root {
+  /* color */
+  --primary-color: #9bc0a8;
+  --secondary-color: #a9cfd1;
+  --tertiary-color: #e0ecb1;
+  --scrollbar-track-color: #f5f5f5;
+  --quaternary-color: #e0e0e0;
+  --scrollbar-thumb-color: #d0d0d0;
+  --senary-color: #c0c0c0;
+  --septenary-color: #b0b0b0;
+  --octonary-color: #a0a0a0;
+  --nonary-color: #909090;
+  --denary-color: #808080;
+  --text-color: #333333;
+
+  
+  /* font-size */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 28px;
+
+  /* border-radius */
+  --border-radius-sm: 8px;
+  --border-radius-md: 10px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 14px;
+  --border-radius-2xl: 16px;
+  --border-radius-3xl: 18px;
+
+  /* box-shadow */
+  --box-shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --box-shadow-md: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.1);
+  --box-shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.1);
+  --box-shadow-2xl: 0 20px 40px rgba(0, 0, 0, 0.1);
+
+  /* transition */
+  --transition-sm: all 0.3s ease;
+  --transition-md: all 0.5s ease;
+}
