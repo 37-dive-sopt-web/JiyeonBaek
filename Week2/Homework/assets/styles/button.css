@@ -1,3 +1,4 @@
+/* 검색 필터 버튼 */
 #search-filter-form .filter-actions {
   display: flex;
   justify-content: space-between;
@@ -18,4 +19,50 @@
   background-color: var(--primary-color);
   color: var(--quinary-color);
   transition: var(--transition-sm);
+}
+
+/* 모달 버튼 */
+.modal-header button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--quaternary-color);
+}
+
+.modal-header button:hover {
+  color: var(--denary-color);
+}
+
+#add-member-form .filter-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+#add-member-form .filter-actions button {
+  padding: 10px 20px;
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  transition: var(--transition-sm);
+}
+
+#add-member-form .filter-actions button[type="submit"] {
+  background-color: var(--secondary-color);
+  color: var(--quinary-color);
+}
+
+#add-member-form .filter-actions button[type="submit"]:hover {
+  background-color: var(--quaternary-color);
+}
+
+#add-member-form .filter-actions button[type="button"] {
+  background-color: var(--tertiary-color);
+  color: var(--quinary-color);
+  border: none;
+}
+
+#add-member-form .filter-actions button[type="button"]:hover {
+  background-color: var(--denary-color);
 }
