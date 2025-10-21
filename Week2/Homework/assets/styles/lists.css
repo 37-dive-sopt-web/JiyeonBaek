@@ -1,0 +1,84 @@
+/* 목록 헤더 */
+.lists-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.lists-header .bulk-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+#lists-section {
+  margin-top: 24px;
+  width: 100%;
+  background-color: white;
+  padding: 20px 30px;
+  color: var(--primary-color);
+  border-radius: var(--border-radius-xl);
+}
+
+#lists-section h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.bulk-actions button {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  color: var(--quinary-color);
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius-lg);
+  white-space: nowrap;
+}
+
+.bulk-actions button:hover {
+  background-color: var(--quinary-color);
+  color: var(--secondary-color);
+  transition: var(--transition-sm);
+}
+
+/* 목록 */
+#lists {
+  background-color: var(--quinary-color);
+}
+
+#lists table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#lists table th,
+#lists table td {
+  padding: 10px 12px;
+  border: 1px solid var(--senary-color);
+}
+
+#lists table th {
+  background-color: var(--secondary-color);
+  color: var(--quinary-color);
+  text-align: left;
+}
+
+#lists table td {
+  color: var(--primary-color);
+}
+
+#lists table td a {
+  color: var(--quaternary-color);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#lists table td a:hover {
+  color: var(--secondary-color);
+  transition: var(--transition-sm);
+}
