@@ -18,7 +18,11 @@ body {
 
 body {
   max-width: 1200px;
-  margin: 150px auto 0;
+  margin: 160px auto 0;
+}
+
+main {
+  padding-bottom: 40px;
 }
 
 a {
@@ -50,7 +54,13 @@ button {
 
 input,
 textarea,
-select,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: var(--transition-sm);
+}
+
 button {
   font-family: inherit;
   font-size: 1rem;
