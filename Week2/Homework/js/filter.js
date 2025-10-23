@@ -1,7 +1,24 @@
 import { readStorage } from "./storage.js";
-import { includesText, renderMembers } from "./render.js";
+import { renderMembers } from "./render.js";
 
-// 검색 필터링
+/**
+ * 텍스트 검색
+ * @param {*} target
+ * @param {*} query
+ * @returns {boolean} 텍스트 검색 결과
+ */
+export const includesText = (target, query) => {
+  if (!query) return true;
+  if (target == null) return false;
+  return String(target).toLowerCase().includes(String(query).toLowerCase());
+};
+
+/**
+ * 검색 필터링
+ * @param {*} formData 검색 폼 데이터
+ * @param {*} container 렌더링 컨테이너
+ * @param {*} setCurrentMembers 현재 멤버 리스트
+ */
 export const applyFilter = (formData, container, setCurrentMembers) => {
   const name = formData.get("name");
   const englishName = formData.get("englishName");

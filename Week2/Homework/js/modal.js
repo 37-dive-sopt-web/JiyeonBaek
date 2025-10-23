@@ -1,14 +1,22 @@
 import { readStorage, writeStorage, generateId } from "./storage.js";
 import { renderMembers } from "./render.js";
 
-// 모달 관리
+/**
+ *  모달
+ * @param {*} addModal 모달
+ * @param {*} addMemberBtn 모달 열기 버튼 
+ * @param {*} closeAddModalBtn 모달 닫기 버튼
+ * @param {*} addMemberForm 모달 폼
+ */
 export const initModal = (
-  addMemberBtn,
   addModal,
+  addMemberBtn,
   closeAddModalBtn,
-  cancelAddBtn,
   addMemberForm
 ) => {
+  {
+    /* 모달 열기 */
+  }
   if (addMemberBtn && addModal) {
     addMemberBtn.addEventListener("click", () => {
       addModal.style.display = "block";
@@ -16,6 +24,9 @@ export const initModal = (
     });
   }
 
+  {
+    /* 모달 닫기 */
+  }
   const closeModal = () => {
     if (addModal) {
       addModal.style.display = "none";
@@ -24,21 +35,33 @@ export const initModal = (
     }
   };
 
-  [closeAddModalBtn, cancelAddBtn].forEach((btn) => {
-    if (btn) btn.addEventListener("click", closeModal);
-  });
-};
+  {
+    /* X 버튼으로 모달 닫기 */
+  }
+  if (closeAddModalBtn) {
+    closeAddModalBtn.addEventListener("click", closeModal);
+  }
 
-// 폼 유효성 검사
-export const checkFormValidity = (addMemberForm) => {
-  if (!addMemberForm) return;
-  const submitBtn = addMemberForm.querySelector('button[type="submit"]');
-  if (submitBtn) {
-    submitBtn.disabled = false;
+  {
+    /* 배경 클릭으로 모달 닫기 */
+  }
+  if (addModal) {
+    addModal.addEventListener("click", (e) => {
+      if (e.target.classList.contains("modal-backdrop")) {
+        closeModal();
+      }
+    });
   }
 };
 
-// 멤버 추가
+/**
+ * 멤버 추가
+ * @param {*} addMemberForm 모달 폼
+ * @param {*} addModal 모달
+ * @param {*} setInitialMembers 초기 멤버 리스트
+ * @param {*} setCurrentMembers 현재 멤버 리스트
+ * @param {*} renderContainer 렌더링 컨테이너
+ */
 export const initAddMember = (
   addMemberForm,
   addModal,
@@ -46,16 +69,12 @@ export const initAddMember = (
   setCurrentMembers,
   renderContainer
 ) => {
-  if (!addMemberForm) return;
-
-  const handleFormChange = () => checkFormValidity(addMemberForm);
-  addMemberForm.addEventListener("input", handleFormChange);
-  addMemberForm.addEventListener("change", handleFormChange);
-  checkFormValidity(addMemberForm);
-
   addMemberForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    {
+      /* 폼 유효성 검사 */
+    }
     const inputs = addMemberForm.querySelectorAll(
       "input[required], select[required]"
     );
@@ -71,6 +90,9 @@ export const initAddMember = (
       return;
     }
 
+    {
+      /* 멤버 객체 생성 */
+    }
     const fd = new FormData(addMemberForm);
     const newMember = {
       id: generateId(),

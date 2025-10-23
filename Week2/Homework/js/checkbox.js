@@ -1,17 +1,24 @@
 import { readStorage, writeStorage } from "./storage.js";
 import { renderMembers } from "./render.js";
 
-// 체크박스
+/**
+ * 체크박스
+ * @param {*} lists 목록
+ * @param {*} deleteSelectedBtn 선택 삭제 버튼
+ * @param {*} setInitialMembers 초기 멤버 리스트
+ * @param {*} setCurrentMembers 현재 멤버 리스트
+ * @param {*} renderContainer 렌더링 컨테이너
+ */
 export const initCheckbox = (
   lists,
-  selectAllBtn,
   deleteSelectedBtn,
   setInitialMembers,
   setCurrentMembers,
   renderContainer
 ) => {
-  if (!lists) return;
-
+  {
+    /* 전체 선택 버튼 */
+  }
   const updateMasterCheckbox = () => {
     const allChecks = lists.querySelectorAll(".row-check");
     const checkedChecks = lists.querySelectorAll(".row-check:checked");
@@ -22,32 +29,9 @@ export const initCheckbox = (
     }
   };
 
-  lists.addEventListener("change", (e) => {
-    const { target } = e;
-
-    if (target.id === "master-check") {
-      const isChecked = target.checked;
-      lists.querySelectorAll(".row-check").forEach((cb) => {
-        cb.checked = isChecked;
-      });
-    } else if (target.classList.contains("row-check")) {
-      updateMasterCheckbox();
-    }
-  });
-
-  if (selectAllBtn) {
-    selectAllBtn.addEventListener("click", () => {
-      const masterCheck = lists.querySelector("#master-check");
-      if (masterCheck) {
-        const nextState = !masterCheck.checked;
-        masterCheck.checked = nextState;
-        lists.querySelectorAll(".row-check").forEach((cb) => {
-          cb.checked = nextState;
-        });
-      }
-    });
+  {
+    /* 선택 삭제 버튼 */
   }
-
   if (deleteSelectedBtn) {
     deleteSelectedBtn.addEventListener("click", () => {
       const checkedBoxes = lists.querySelectorAll(".row-check:checked");
@@ -69,4 +53,20 @@ export const initCheckbox = (
       renderMembers(updatedMembers, renderContainer);
     });
   }
+
+  {
+    /* 체크박스 변경 */
+  }
+  lists.addEventListener("change", (e) => {
+    const { target } = e;
+
+    if (target.id === "master-check") {
+      const isChecked = target.checked;
+      lists.querySelectorAll(".row-check").forEach((cb) => {
+        cb.checked = isChecked;
+      });
+    } else if (target.classList.contains("row-check")) {
+      updateMasterCheckbox();
+    }
+  });
 };

@@ -2,17 +2,19 @@ import { members } from "../data/member.js";
 
 const STORAGE_KEY = "membersData";
 
-// localStorage 초기화
+// localStorage 초기화 (처음 한번만 실행)
 (function initStorageOnce() {
   if (!localStorage.getItem(STORAGE_KEY)) {
     try {
       const seed = Array.isArray(members) ? members : [];
       localStorage.setItem(STORAGE_KEY, JSON.stringify(seed));
-    } catch (_) {}
+    } catch (error) {
+      console.error("localStorage 초기화 실패", error);
+    }
   }
 })();
 
-// 데이터 읽기
+// 데이터 불러오기
 export const readStorage = () => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -26,7 +28,9 @@ export const readStorage = () => {
 export const writeStorage = (list) => {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-  } catch (_) {}
+  } catch (error) {
+    console.error("데이터 저장 실패", error);
+  }
 };
 
 // 새 ID 생성

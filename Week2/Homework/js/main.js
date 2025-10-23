@@ -6,27 +6,27 @@ import { initCheckbox } from "./checkbox.js";
 
 const form = document.getElementById("search-filter-form");
 const lists = document.getElementById("lists");
-const selectAllBtn = document.getElementById("select-all");
 const deleteSelectedBtn = document.getElementById("delete-selected");
 const addMemberBtn = document.getElementById("add-member");
 const addModal = document.getElementById("add-modal");
 const closeAddModalBtn = document.getElementById("close-add-modal");
-const cancelAddBtn = document.getElementById("cancel-add");
 const addMemberForm = document.getElementById("add-member-form");
 
 // 상태 관리
 let initialMembers = readStorage();
 let currentMembers = [...initialMembers];
 
+// 전체 멤버 목록 업데이트
 const setInitialMembers = (members) => {
   initialMembers = members;
 };
 
+// 현재 멤버 목록 업데이트
 const setCurrentMembers = (members) => {
   currentMembers = members;
 };
 
-// 데이터 새로고침
+// 데이터 새로고침(초기화)
 const refreshData = () => {
   const members = readStorage();
   setInitialMembers(members);
@@ -46,13 +46,7 @@ if (form) {
 }
 
 // 모달 초기화
-initModal(
-  addMemberBtn,
-  addModal,
-  closeAddModalBtn,
-  cancelAddBtn,
-  addMemberForm
-);
+initModal(addModal, addMemberBtn, closeAddModalBtn, addMemberForm);
 
 // 멤버 추가 기능 초기화
 initAddMember(
@@ -66,7 +60,6 @@ initAddMember(
 // 체크박스 기능 초기화
 initCheckbox(
   lists,
-  selectAllBtn,
   deleteSelectedBtn,
   setInitialMembers,
   setCurrentMembers,
