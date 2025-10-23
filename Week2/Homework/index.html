@@ -9,8 +9,14 @@
   </head>
   <body>
     <!-- 헤더 -->
-    <header id="header">
-      <img src="assets/images/alien.png" alt="alien" width="80" height="80" />
+    <header id="header" role="banner">
+      <img
+        src="assets/images/alien.png"
+        alt="SOPT 로고"
+        width="80"
+        height="80"
+        loading="eager"
+      />
       <h1>웹계인 관리 페이지</h1>
       <p>🛸 DIVE SOPT 37기 YB 백지연 🛸</p>
     </header>
@@ -104,24 +110,53 @@
             </div>
           </div>
 
-          <div class="filter-actions">
-            <button type="submit" id="apply-filter">적용</button>
-            <button type="reset" id="reset-filter" aria-label="필터 초기화">
+          <div class="filter-actions" role="group" aria-label="필터 액션">
+            <button
+              type="submit"
+              id="apply-filter"
+              aria-label="필터 적용 버튼"
+            >
+              적용
+            </button>
+            <button
+              type="reset"
+              id="reset-filter"
+              aria-label="모든 필터 초기화 버튼"
+            >
               초기화
             </button>
           </div>
         </form>
       </section>
 
-      <section id="lists-section">
-        <div class="lists-header">
-          <h2>37기 웹 파트 목록</h2>
-          <div class="bulk-actions">
-            <button type="button" id="delete-selected">선택 삭제</button>
-            <button type="button" id="add-member">추가</button>
+      <section id="lists-section" aria-labelledby="lists-title">
+        <header class="lists-header">
+          <h2 id="lists-title">37기 웹 파트 목록</h2>
+          <div class="bulk-actions" role="group" aria-label="멤버 관리 액션">
+            <button
+              type="button"
+              id="delete-selected"
+              aria-describedby="delete-help"
+            >
+              선택 삭제
+            </button>
+            <button type="button" id="add-member" aria-describedby="add-help">
+              추가
+            </button>
           </div>
-        </div>
-        <div id="lists" aria-live="polite"></div>
+          <div id="delete-help" class="sr-only">
+            삭제할 멤버를 체크박스로 선택한 후 클릭하세요
+          </div>
+          <div id="add-help" class="sr-only">
+            새 멤버를 추가하려면 클릭하세요
+          </div>
+        </header>
+        <div
+          id="lists"
+          aria-live="polite"
+          role="region"
+          aria-label="멤버 목록"
+        ></div>
       </section>
     </main>
 
@@ -138,10 +173,13 @@
       <div class="modal-content" role="document">
         <header class="modal-header">
           <h3 id="add-modal-title">새 멤버 추가</h3>
-          <button type="button" id="close-add-modal" aria-label="닫기">
-            ×
+          <button type="button" id="close-add-modal" aria-label="모달 닫기">
+            <span aria-hidden="true">×</span>
           </button>
         </header>
+        <div id="add-modal-description" class="sr-only">
+          새로운 웹파트 멤버의 정보를 입력하세요
+        </div>
         <form id="add-member-form" aria-label="새 멤버 추가">
           <!-- 1행: 1개 -->
           <div class="filter-grid-row">
@@ -230,8 +268,11 @@
             </div>
           </div>
 
-          <div class="filter-actions">
-            <button type="submit">추가</button>
+          <div class="filter-actions" role="group" aria-label="멤버 추가 액션">
+            <button type="submit" aria-describedby="submit-help">추가</button>
+          </div>
+          <div id="submit-help" class="sr-only">
+            모든 필수 항목을 입력한 후 추가 버튼을 눌러주세요
           </div>
         </form>
       </div>

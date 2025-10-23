@@ -17,14 +17,14 @@ export const renderMembers = (list, container) => {
   const thead = `
     <thead>
       <tr>
-        <th><input type="checkbox" id="master-check" /></th>
-        <th>이름</th>
-        <th>영문 이름</th>
-        <th>깃허브</th>
-        <th>성별</th>
-        <th>역할</th>
-        <th>금잔디조</th>
-        <th>나이</th>
+        <th scope="col"><input type="checkbox" id="master-check" aria-label="전체 선택" /></th>
+        <th scope="col">이름</th>
+        <th scope="col">영문 이름</th>
+        <th scope="col">깃허브</th>
+        <th scope="col">성별</th>
+        <th scope="col">역할</th>
+        <th scope="col">금잔디조</th>
+        <th scope="col">나이</th>
       </tr>
     </thead>`;
 
@@ -34,10 +34,10 @@ export const renderMembers = (list, container) => {
         .map(
           (member) => `
         <tr data-id="${member.id}">
-          <td><input type="checkbox" class="row-check" data-id="${member.id}" /></td>
+          <td><input type="checkbox" class="row-check" data-id="${member.id}" aria-label="${member.name} 선택" /></td>
           <td>${member.name}</td>
           <td>${member.englishName}</td>
-          <td><a href="https://github.com/${member.github}" target="_blank" rel="noopener noreferrer">${member.github}</a></td>
+          <td><a href="https://github.com/${member.github}" target="_blank" rel="noopener noreferrer" aria-label="${member.name}의 깃허브 프로필">${member.github}</a></td>
           <td>${member.gender}</td>
           <td>${member.role}</td>
           <td>${member.codeReviewGroup}</td>
