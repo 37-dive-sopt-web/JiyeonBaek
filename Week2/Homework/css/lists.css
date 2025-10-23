@@ -82,3 +82,9 @@
   color: var(--secondary-color);
   transition: var(--transition-sm);
 }
+
+#no-results {
+  text-align: center;
+  padding: 20px;
+  background-color: white;
+}

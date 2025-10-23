@@ -1,16 +1,9 @@
-// 텍스트 검색
-export const includesText = (target, query) => {
-  if (!query) return true;
-  if (target == null) return false;
-  return String(target).toLowerCase().includes(String(query).toLowerCase());
-};
-
 // 테이블 렌더링
 export const renderMembers = (list, container) => {
   if (!container) return;
 
   if (!list || list.length === 0) {
-    container.innerHTML = `<p style="text-align: center; padding: 20px; background-color: white;">검색 결과가 없습니다.</p>`;
+    container.innerHTML = `<p id="no-results">검색 결과가 없습니다.</p>`;
     return;
   }
 
