@@ -79,7 +79,7 @@
 }
 
 #lists table td a:hover {
-  color: var(--secondary-color);
+  color: var(--tertiary-color);
   transition: var(--transition-sm);
 }
 

@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  padding: 20px 50px;
+  padding: 20px 200px;
   background-color: var(--secondary-color);
   box-shadow: var(--box-shadow-sm);
   position: fixed;
