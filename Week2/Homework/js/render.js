@@ -3,7 +3,7 @@ export const renderMembers = (list, container) => {
   if (!container) return;
 
   if (!list || list.length === 0) {
-    container.innerHTML = `<p id="no-results">검색 결과가 없습니다.</p>`;
+    container.innerHTML = `<p id="no-results">조건에 맞는 데이터가 없어요 👽</p>`;
     return;
   }
 
