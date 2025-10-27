@@ -1,0 +1,50 @@
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 10px 40px;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+#profile-img {
+  border-radius: 50%;
+  margin: 20px;
+  background-color: white;
+}
+
+#profile-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#profile-title h1 {
+  font-size: var(--font-size-xxl);
+  font-weight: bold;
+  color: white;
+}
+
+#profile-title h2 {
+  font-size: var(--font-size-md);
+  color: var(--third-color);
+}
+
+#sns {
+  display: flex;
+  gap: 15px;
+}
+
+#sns img {
+  border-radius: 50%;
+  background-color: white;
+  transition: transform 0.3s;
+}
+
+#sns img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
