@@ -21,6 +21,12 @@ export const initModal = (
     addMemberBtn.addEventListener("click", () => {
       addModal.style.display = "block";
       addModal.setAttribute("aria-hidden", "false");
+
+      // 첫 번째 입력 필드 포커스
+      const firstInput = addModal.querySelector("input");
+      if (firstInput) {
+        setTimeout(() => firstInput.focus(), 0);
+      }
     });
   }
 
