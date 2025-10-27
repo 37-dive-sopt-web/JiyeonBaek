@@ -1,0 +1,67 @@
+#intro-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#intro-button-container {
+  display: flex;
+  gap: 10px;
+}
+
+#intro-button-container button {
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--border-radius-xl);
+  border: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#intro-button-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+}
+
+#reset-text-btn {
+  background-color: var(--primary-color);
+}
+
+#reset-text-btn:hover {
+  background-color: var(--primary-color-hover);
+}
+
+#change-text-btn {
+  background-color: var(--secondary-color);
+}
+
+#change-text-btn:hover {
+  background-color: var(--secondary-color-hover);
+}
+
+#intro-profile {
+  min-width: 200px;
+  min-height: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+#intro-profile:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 860px) {
+  #intro-button-container {
+    align-items: center;
+  }
+  #intro .section-container {
+    flex-direction: column;
+  }
+}
