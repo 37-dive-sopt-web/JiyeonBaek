@@ -92,3 +92,9 @@ button {
   white-space: nowrap;
   border: 0;
 }
+
+@media (max-width: 860px) {
+  body {
+    margin: 220px auto 0;
+  }
+}
