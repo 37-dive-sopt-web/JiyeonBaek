@@ -37,20 +37,27 @@ export const initCheckbox = (
       const checkedBoxes = lists.querySelectorAll(".row-check:checked");
       if (checkedBoxes.length === 0) return;
 
+      if (
+        !confirm(
+          `👽: 선택하신 ${checkedBoxes.length}명의 멤버를 삭제하시겠습니까???`
+        )
+      ) {
+        return;
+      }
+
       const selectedIds = Array.from(checkedBoxes).map((cb) =>
         Number(cb.getAttribute("data-id"))
       );
 
-      const remainingMembers = readStorage().filter(
+      const allMembers = readStorage();
+      const remainingMembers = allMembers.filter(
         (m) => !selectedIds.includes(Number(m.id))
       );
 
       writeStorage(remainingMembers);
-
-      const updatedMembers = readStorage();
-      setInitialMembers(updatedMembers);
-      setCurrentMembers(updatedMembers);
-      renderMembers(updatedMembers, renderContainer);
+      setInitialMembers(remainingMembers);
+      setCurrentMembers(remainingMembers);
+      renderMembers(remainingMembers, renderContainer);
     });
   }
 
