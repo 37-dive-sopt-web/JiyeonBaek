@@ -4,7 +4,7 @@ import { renderMembers } from "./render.js";
 /**
  *  모달
  * @param {*} addModal 모달
- * @param {*} addMemberBtn 모달 열기 버튼 
+ * @param {*} addMemberBtn 모달 열기 버튼
  * @param {*} closeAddModalBtn 모달 닫기 버튼
  * @param {*} addMemberForm 모달 폼
  */
@@ -48,6 +48,20 @@ export const initModal = (
   if (addModal) {
     addModal.addEventListener("click", (e) => {
       if (e.target.classList.contains("modal-backdrop")) {
+        closeModal();
+      }
+    });
+  }
+
+  {
+    /* esc 키로 모달 닫기 */
+  }
+  if (addModal) {
+    document.addEventListener("keydown", (e) => {
+      if (
+        e.key === "Escape" &&
+        addModal.getAttribute("aria-hidden") === "false"
+      ) {
         closeModal();
       }
     });
