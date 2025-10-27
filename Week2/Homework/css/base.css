@@ -58,7 +58,6 @@ select {
   font-family: inherit;
   font-size: 1rem;
   outline: none;
-  transition: var(--transition-sm);
 }
 
 button {
@@ -66,7 +65,6 @@ button {
   font-size: 1rem;
   outline: none;
   cursor: pointer;
-  transition: var(--transition-sm);
 }
 
 ::-webkit-scrollbar {
@@ -96,8 +94,11 @@ button {
 }
 
 /* 키보드 포커스 시에만 테두리 표시 */
-button:focus-visible,
-input:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+}
+
 select:focus-visible {
   outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
