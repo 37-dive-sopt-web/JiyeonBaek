@@ -2,7 +2,7 @@ import { members } from "../data/member.js";
 
 const STORAGE_KEY = "membersData";
 
-// localStorage 초기화 (처음 한번만 실행)
+/* localStorage 초기화 (처음 한번만 실행) */
 (function initStorageOnce() {
   if (!localStorage.getItem(STORAGE_KEY)) {
     try {
@@ -14,7 +14,7 @@ const STORAGE_KEY = "membersData";
   }
 })();
 
-// 데이터 불러오기
+/* 데이터 불러오기 */
 export const readStorage = () => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -24,7 +24,7 @@ export const readStorage = () => {
   }
 };
 
-// 데이터 저장
+/* 데이터 저장 */
 export const writeStorage = (list) => {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
@@ -33,7 +33,7 @@ export const writeStorage = (list) => {
   }
 };
 
-// 새 ID 생성
+/* 새 ID 생성 */
 let lastGeneratedId = 0;
 export const generateId = () => {
   const all = readStorage();

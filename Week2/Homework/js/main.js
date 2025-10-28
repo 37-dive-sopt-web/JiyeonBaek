@@ -12,21 +12,21 @@ const addModal = document.getElementById("add-modal");
 const closeAddModalBtn = document.getElementById("close-add-modal");
 const addMemberForm = document.getElementById("add-member-form");
 
-// 상태 관리
+/* 상태 관리 */
 let initialMembers = readStorage();
 let currentMembers = [...initialMembers];
 
-// 전체 멤버 목록 업데이트
+/* 전체 멤버 목록 업데이트 */
 const setInitialMembers = (members) => {
   initialMembers = members;
 };
 
-// 현재 멤버 목록 업데이트
+/* 현재 멤버 목록 업데이트 */
 const setCurrentMembers = (members) => {
   currentMembers = members;
 };
 
-// 데이터 새로고침(초기화)
+/* 데이터 초기화 */
 const refreshData = () => {
   const members = readStorage();
   setInitialMembers(members);
@@ -34,7 +34,7 @@ const refreshData = () => {
   renderMembers(members, lists);
 };
 
-// 검색 필터 이벤트
+/* 검색 필터 이벤트 */
 if (form) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -45,10 +45,10 @@ if (form) {
   form.addEventListener("reset", refreshData);
 }
 
-// 모달 초기화
+/* 모달 초기화 */
 initModal(addModal, addMemberBtn, closeAddModalBtn, addMemberForm);
 
-// 멤버 추가 기능 초기화
+/* 멤버 추가 기능 초기화 */
 initAddMember(
   addMemberForm,
   addModal,
@@ -57,7 +57,7 @@ initAddMember(
   lists
 );
 
-// 체크박스 기능 초기화
+/* 체크박스 기능 초기화 */
 initCheckbox(
   lists,
   deleteSelectedBtn,
@@ -66,5 +66,5 @@ initCheckbox(
   lists
 );
 
-// 초기 렌더링
+/* 초기 렌더링 */
 renderMembers(currentMembers, lists);

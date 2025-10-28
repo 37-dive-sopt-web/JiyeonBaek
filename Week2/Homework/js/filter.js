@@ -2,9 +2,9 @@ import { readStorage } from "./storage.js";
 import { renderMembers } from "./render.js";
 
 /**
- * 텍스트 검색
- * @param {*} target
- * @param {*} query
+ * 텍스트 검색 - 검색 대상에 검색 쿼리가 포함되어 있는지 확인
+ * @param {*} target 검색 대상
+ * @param {*} query 검색 쿼리
  * @returns {boolean} 텍스트 검색 결과
  */
 export const includesText = (target, query) => {
@@ -14,7 +14,7 @@ export const includesText = (target, query) => {
 };
 
 /**
- * 검색 필터링
+ * 검색 필터링 - 검색 조건에 맞는 멤버 목록 필터링
  * @param {*} formData 검색 폼 데이터
  * @param {*} container 렌더링 컨테이너
  * @param {*} setCurrentMembers 현재 멤버 리스트

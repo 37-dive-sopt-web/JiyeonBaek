@@ -1,4 +1,4 @@
-// 테이블 렌더링
+/* 테이블 렌더링 - 멤버 목록 테이블 렌더링 */
 export const renderMembers = (list, container) => {
   if (!container) return;
 

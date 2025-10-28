@@ -2,7 +2,7 @@ import { readStorage, writeStorage } from "./storage.js";
 import { renderMembers } from "./render.js";
 
 /**
- * 체크박스
+ * 체크박스 - 전체 선택 버튼과 개별 체크박스 관리
  * @param {*} lists 목록
  * @param {*} deleteSelectedBtn 선택 삭제 버튼
  * @param {*} setInitialMembers 초기 멤버 리스트
