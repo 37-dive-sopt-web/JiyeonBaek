@@ -1,0 +1,13 @@
+/* Card.module.css */
+
+.card {
+  background-color: #fff2d0;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  width: 250px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
