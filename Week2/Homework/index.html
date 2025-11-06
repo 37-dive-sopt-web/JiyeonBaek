@@ -90,10 +90,13 @@
             <div class="filter-field">
               <label for="team">금잔디조</label>
               <input
-                type="text"
+                type="number"
                 id="team"
                 name="team"
                 placeholder="금잔디조를 입력하세요 (1~9)"
+                min="1"
+                max="9"
+                inputmode="numeric"
                 autocomplete="off"
               />
             </div>
@@ -244,10 +247,13 @@
             <div class="filter-field">
               <label for="add-team">금잔디조</label>
               <input
-                type="text"
+                type="number"
                 id="add-team"
                 name="team"
                 placeholder="금잔디조를 입력하세요 (1~9)"
+                min="1"
+                max="9"
+                inputmode="numeric"
                 required
               />
             </div>
@@ -258,7 +264,8 @@
                 id="add-age"
                 name="age"
                 placeholder="나이를 입력하세요"
-                min="0"
+                min="1"
+                inputmode="numeric"
                 required
               />
             </div>
