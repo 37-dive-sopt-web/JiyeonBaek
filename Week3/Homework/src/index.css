@@ -8,19 +8,29 @@
   font-display: swap;
 }
 
+* {
+  box-sizing: border-box;
+  font-family: "NeoDunggeunmo", monospace;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+}
+
 @theme {
   --font-neodgm: "NeoDunggeunmo", monospace;
 
-  --color-primary: #BFDC6B;
-  --color-secondary: #D4E897;
-  --color-tertiary: #E3EDC4;
-  --color-quaternary: #CEF654;
-  --color-quinary: #FFF2C3;
+  --color-primary: #bfdc6b;
+  --color-secondary: #d4e897;
+  --color-tertiary: #e3edc4;
+  --color-quaternary: #cef654;
+  --color-quinary: #fff2c3;
 
   --color-text-primary: #333333;
   --color-text-secondary: #666666;
   --color-text-tertiary: #999999;
-  --color-text-quaternary: #CCCCCC;
+  --color-text-quaternary: #cccccc;
 
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.15);
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -32,12 +42,4 @@
   --rounded-lg: 20px;
   --rounded-xl: 25px;
   --rounded-xxl: 30px;
-
-  --font-size-sm: 0.875rem; 
-  --font-size-md: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-xxl: 1.5rem;
-  --font-size-xxxl: 1.75rem;
-  --font-size-xxxxl: 2rem;
 }
