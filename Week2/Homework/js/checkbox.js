@@ -25,9 +25,21 @@ export const initCheckbox = (
     const allChecks = lists.querySelectorAll(".row-check");
     const checkedChecks = lists.querySelectorAll(".row-check:checked");
     const masterCheck = lists.querySelector("#master-check");
-    if (masterCheck) {
-      masterCheck.checked =
-        allChecks.length > 0 && checkedChecks.length === allChecks.length;
+
+    if (!masterCheck) return;
+
+    if (checkedChecks.length === allChecks.length) {
+      masterCheck.checked = true;
+      masterCheck.indeterminate = false;
+    } else if (
+      checkedChecks.length > 0 &&
+      checkedChecks.length < allChecks.length
+    ) {
+      masterCheck.checked = false;
+      masterCheck.indeterminate = true;
+    } else {
+      masterCheck.checked = false;
+      masterCheck.indeterminate = false;
     }
   };
 
