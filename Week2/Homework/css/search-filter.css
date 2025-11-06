@@ -1,0 +1,73 @@
+#search-filter {
+  width: 100%;
+  background-color: white;
+  padding: 20px 30px;
+  color: var(--primary-color);
+  border-radius: var(--border-radius-xl);
+}
+
+#search-filter h2 {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+#search-filter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#search-filter-form .filter-field {
+  display: flex;
+  align-items: center;
+}
+
+#search-filter-form .filter-field > label {
+  flex: 0 0 100px;
+  white-space: nowrap;
+}
+
+#search-filter-form .filter-field > input,
+#search-filter-form .filter-field > select,
+#search-filter-form .filter-field > textarea {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#search-filter-form .filter-grid-row {
+  display: grid;
+  gap: 20px;
+}
+
+/* 1행, 2행: 1열 */
+#search-filter-form .filter-grid-row:nth-of-type(1),
+#search-filter-form .filter-grid-row:nth-of-type(2) {
+  grid-template-columns: 1fr;
+}
+
+/* 3행: 3열 */
+#search-filter-form .filter-grid-row:nth-of-type(3) {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* 4행: 2열 */
+#search-filter-form .filter-grid-row:nth-of-type(4) {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+  #search-filter-form .filter-field {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #search-filter-form .filter-field > label {
+    flex: 0 0 auto;
+  }
+
+  /* 모바일에선 모든 행 1열 */
+  #search-filter-form .filter-grid-row {
+    grid-template-columns: 1fr !important;
+  }
+}

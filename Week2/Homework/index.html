@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="icon" type="image/png" href="images/alien.png" />
+    <title>관리자 페이지</title>
+  </head>
+  <body>
+    <!-- 헤더 -->
+    <header id="header">
+      <img
+        src="images/alien.png"
+        alt="외계인 아이콘"
+        width="80"
+        height="80"
+        loading="eager"
+      />
+      <h1>웹계인 관리 페이지</h1>
+      <p>🛸 DIVE SOPT 37기 YB 백지연 🛸</p>
+    </header>
+
+    <!-- 메인 -->
+    <main>
+      <section id="search-filter">
+        <h2>검색 필터</h2>
+        <form id="search-filter-form" aria-label="검색 필터">
+          <!-- 1행: 1개 -->
+          <div class="filter-grid-row">
+            <div class="filter-field">
+              <label for="name">이름</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="이름을 입력하세요"
+                autocomplete="name"
+              />
+            </div>
+          </div>
+
+          <!-- 2행: 1개 -->
+          <div class="filter-grid-row">
+            <div class="filter-field">
+              <label for="englishName">영문 이름</label>
+              <input
+                type="text"
+                id="englishName"
+                name="englishName"
+                placeholder="영문 이름을 입력하세요"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+          <!-- 3행: 3개 -->
+          <div class="filter-grid-row">
+            <div class="filter-field">
+              <label for="github">깃허브</label>
+              <input
+                type="text"
+                id="github"
+                name="github"
+                placeholder="깃허브 아이디를 입력하세요"
+                inputmode="text"
+                autocomplete="off"
+              />
+            </div>
+            <div class="filter-field">
+              <label for="gender">성별</label>
+              <select id="gender" name="gender">
+                <option value="">전체</option>
+                <option value="female">여성</option>
+                <option value="male">남성</option>
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="role">역할</label>
+              <select id="role" name="role">
+                <option value="">전체</option>
+                <option value="OB">OB</option>
+                <option value="YB">YB</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 4행: 2개 -->
+          <div class="filter-grid-row">
+            <div class="filter-field">
+              <label for="team">금잔디조</label>
+              <input
+                type="number"
+                id="team"
+                name="team"
+                placeholder="금잔디조를 입력하세요 (1~9)"
+                min="1"
+                max="9"
+                inputmode="numeric"
+                autocomplete="off"
+              />
+            </div>
+            <div class="filter-field">
+              <label for="age">나이</label>
+              <input
+                type="number"
+                id="age"
+                name="age"
+                placeholder="나이를 입력하세요"
+                min="0"
+                inputmode="numeric"
+              />
+            </div>
+          </div>
+
+          <div class="filter-actions" role="group" aria-label="필터 액션">
+            <button type="submit" id="apply-filter" aria-label="필터 적용 버튼">
+              적용
+            </button>
+            <button
+              type="reset"
+              id="reset-filter"
+              aria-label="모든 필터 초기화 버튼"
+            >
+              초기화
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section id="lists-section" aria-labelledby="lists-title">
+        <header class="lists-header">
+          <h2 id="lists-title">37기 웹 파트 목록</h2>
+          <div class="bulk-actions" role="group" aria-label="멤버 관리 액션">
+            <button
+              type="button"
+              id="delete-selected"
+              aria-describedby="delete-help"
+            >
+              선택 삭제
+            </button>
+            <button type="button" id="add-member" aria-describedby="add-help">
+              추가
+            </button>
+          </div>
+          <div id="delete-help" class="sr-only">
+            삭제할 멤버를 체크박스로 선택한 후 클릭하세요
+          </div>
+          <div id="add-help" class="sr-only">
+            새 멤버를 추가하려면 클릭하세요
+          </div>
+        </header>
+        <div
+          id="lists"
+          aria-live="polite"
+          role="region"
+          aria-label="멤버 목록"
+        ></div>
+      </section>
+    </main>
+
+    <!-- 추가 모달 -->
+    <div
+      id="add-modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="add-modal-title"
+      style="display: none"
+    >
+      <div class="modal-backdrop"></div>
+      <div class="modal-content" role="document">
+        <header class="modal-header">
+          <h3 id="add-modal-title">새 멤버 추가</h3>
+          <button type="button" id="close-add-modal" aria-label="모달 닫기">
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+        <div id="add-modal-description" class="sr-only">
+          새로운 웹파트 멤버의 정보를 입력하세요
+        </div>
+        <form id="add-member-form" aria-label="새 멤버 추가">
+          <!-- 1행: 1개 -->
+          <div class="filter-grid-row">
+            <div class="filter-field">
+              <label for="add-name">이름</label>
+              <input
+                type="text"
+                id="add-name"
+                name="name"
+                placeholder="이름을 입력하세요"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- 2행: 1개 -->
+          <div class="filter-grid-row">
+            <div class="filter-field">
+              <label for="add-englishName">영문 이름</label>
+              <input
+                type="text"
+                id="add-englishName"
+                name="englishName"
+                placeholder="영문 이름을 입력하세요"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- 3행: 1개 -->
+          <div class="filter-grid-row">
+            <div class="filter-field">
+              <label for="add-github">깃허브</label>
+              <input
+                type="text"
+                id="add-github"
+                name="github"
+                placeholder="깃허브 아이디를 입력하세요"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- 4행: 2개 -->
+          <div class="filter-grid-row">
+            <div class="filter-field">
+              <label for="add-gender">성별</label>
+              <select id="add-gender" name="gender" required>
+                <option value="">전체</option>
+                <option value="female">여성</option>
+                <option value="male">남성</option>
+              </select>
+            </div>
+            <div class="filter-field">
+              <label for="add-role">역할</label>
+              <select id="add-role" name="role" required>
+                <option value="">전체</option>
+                <option value="OB">OB</option>
+                <option value="YB">YB</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 5행: 2개 -->
+          <div class="filter-grid-row">
+            <div class="filter-field">
+              <label for="add-team">금잔디조</label>
+              <input
+                type="number"
+                id="add-team"
+                name="team"
+                placeholder="금잔디조를 입력하세요 (1~9)"
+                min="1"
+                max="9"
+                inputmode="numeric"
+                required
+              />
+            </div>
+            <div class="filter-field">
+              <label for="add-age">나이</label>
+              <input
+                type="number"
+                id="add-age"
+                name="age"
+                placeholder="나이를 입력하세요"
+                min="1"
+                inputmode="numeric"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="filter-actions" role="group" aria-label="멤버 추가 액션">
+            <button type="submit" aria-describedby="submit-help">추가</button>
+          </div>
+          <div id="submit-help" class="sr-only">
+            모든 필수 항목을 입력한 후 추가 버튼을 눌러주세요
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
