@@ -9,8 +9,10 @@ import { renderMembers } from "./render.js";
  */
 export const includesText = (target, query) => {
   if (!query) return true;
+  const trimmedQuery = String(query).trim();
+  if (!trimmedQuery) return true;
   if (target == null) return false;
-  return String(target).toLowerCase().includes(String(query).toLowerCase());
+  return String(target).toLowerCase().includes(trimmedQuery.toLowerCase());
 };
 
 /**
@@ -36,8 +38,9 @@ export const applyFilter = (formData, container, setCurrentMembers) => {
     const byGithub = includesText(m.github, github);
     const byGender = !gender || m.gender === gender;
     const byRole = !role || m.role === role;
-    const byTeam = !team || Number(m.codeReviewGroup) === Number(team);
-    const byAge = !age || Number(m.age) === Number(age);
+    const byTeam =
+      !team || Number(m.codeReviewGroup) === Number(String(team).trim());
+    const byAge = !age || Number(m.age) === Number(String(age).trim());
     return (
       byName && byEnglish && byGithub && byGender && byRole && byTeam && byAge
     );
