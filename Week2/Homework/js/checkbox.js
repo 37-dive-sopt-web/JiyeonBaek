@@ -16,6 +16,8 @@ export const initCheckbox = (
   setCurrentMembers,
   renderContainer
 ) => {
+  if (!lists || !deleteSelectedBtn) return;
+
   {
     /* 전체 선택 버튼 */
   }
@@ -64,16 +66,18 @@ export const initCheckbox = (
   {
     /* 체크박스 변경 */
   }
-  lists.addEventListener("change", (e) => {
-    const { target } = e;
+  if (lists) {
+    lists.addEventListener("change", (e) => {
+      const { target } = e;
 
-    if (target.id === "master-check") {
-      const isChecked = target.checked;
-      lists.querySelectorAll(".row-check").forEach((cb) => {
-        cb.checked = isChecked;
-      });
-    } else if (target.classList.contains("row-check")) {
-      updateMasterCheckbox();
-    }
-  });
+      if (target.id === "master-check") {
+        const isChecked = target.checked;
+        lists.querySelectorAll(".row-check").forEach((cb) => {
+          cb.checked = isChecked;
+        });
+      } else if (target.classList.contains("row-check")) {
+        updateMasterCheckbox();
+      }
+    });
+  }
 };
