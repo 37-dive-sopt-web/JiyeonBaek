@@ -36,9 +36,8 @@ export const applyFilter = (formData, container, setCurrentMembers) => {
     const byGithub = includesText(m.github, github);
     const byGender = !gender || m.gender === gender;
     const byRole = !role || m.role === role;
-    const byTeam =
-      !team || String(m.codeReviewGroup).includes(String(team).trim());
-    const byAge = !age || String(m.age).includes(String(age).trim());
+    const byTeam = !team || Number(m.codeReviewGroup) === Number(team);
+    const byAge = !age || Number(m.age) === Number(age);
     return (
       byName && byEnglish && byGithub && byGender && byRole && byTeam && byAge
     );
