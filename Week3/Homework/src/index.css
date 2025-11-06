@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "NeoDunggeunmo";
+  src: url("./assets/fonts/neodgm.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-neodgm: "NeoDunggeunmo", monospace;
+
+  --color-primary: #BFDC6B;
+  --color-secondary: #D4E897;
+  --color-tertiary: #E3EDC4;
+  --color-quaternary: #CEF654;
+  --color-quinary: #FFF2C3;
+
+  --color-text-primary: #333333;
+  --color-text-secondary: #666666;
+  --color-text-tertiary: #999999;
+  --color-text-quaternary: #CCCCCC;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.15);
+
+  --rounded-sm: 10px;
+  --rounded-md: 12px;
+  --rounded-lg: 20px;
+  --rounded-xl: 25px;
+  --rounded-xxl: 30px;
+
+  --font-size-sm: 0.875rem; 
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xxl: 1.5rem;
+  --font-size-xxxl: 1.75rem;
+  --font-size-xxxxl: 2rem;
+}
