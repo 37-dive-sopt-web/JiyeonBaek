@@ -83,6 +83,7 @@ export const initCheckbox = (
       const { target } = e;
 
       if (target.id === "master-check") {
+        target.indeterminate = false;
         const isChecked = target.checked;
         lists.querySelectorAll(".row-check").forEach((cb) => {
           cb.checked = isChecked;
