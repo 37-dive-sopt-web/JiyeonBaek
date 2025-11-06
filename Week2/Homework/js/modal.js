@@ -22,6 +22,9 @@ export const initModal = (
       addModal.style.display = "block";
       addModal.setAttribute("aria-hidden", "false");
 
+      // 배경 스크롤 막기
+      document.body.style.overflow = "hidden";
+
       // 첫 번째 입력 필드 포커스
       const firstInput = addModal.querySelector("input");
       if (firstInput) {
@@ -38,6 +41,9 @@ export const initModal = (
       addModal.style.display = "none";
       addModal.setAttribute("aria-hidden", "true");
       if (addMemberForm) addMemberForm.reset();
+
+      // 배경 스크롤 복원
+      document.body.style.overflow = "";
     }
   };
 
@@ -132,6 +138,9 @@ export const initAddMember = (
     addMemberForm.reset();
     addModal.style.display = "none";
     addModal.setAttribute("aria-hidden", "true");
+
+    // 배경 스크롤 복원
+    document.body.style.overflow = "";
 
     const updatedMembers = readStorage();
     setInitialMembers(updatedMembers);
