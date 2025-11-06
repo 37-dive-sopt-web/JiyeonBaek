@@ -29,7 +29,6 @@
 }
 
 .bulk-actions button {
-  width: 100%;
   padding: 10px 12px;
   font-size: var(--font-size-md);
   font-weight: 500;
