@@ -190,10 +190,11 @@ const Game = () => {
   }, [matchedCards.length, deckInfo.data, gameStatus, startTime]);
 
   {
-    /* 게임이 끝났을 때 3초 카운트다운 시작 */
+    /* 게임이 끝났을 때 뒤집힌 카드 초기화 및 3초 카운트다운 시작 */
   }
   useEffect(() => {
     if ((gameStatus === "won" || gameStatus === "lost") && countdown === null) {
+      setFlippedCards([]);
       setCountdown(3);
     }
   }, [gameStatus, countdown]);
