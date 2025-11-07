@@ -20,7 +20,7 @@ const Card = ({ card, state, isFlipped, isMatching, onClick, size }) => {
   const frontClassName = useMemo(
     () =>
       [
-        "card-front w-full h-full flex items-center justify-center rounded-lg absolute inset-0 text-text-primary",
+        "card-front w-full h-full flex items-center justify-center rounded-lg absolute inset-0 text-text-primary backface-hidden transition-transform duration-500 ease-in-out",
         state === "matched" ? "bg-quaternary" : "bg-quinary",
       ]
         .filter(Boolean)
@@ -30,7 +30,7 @@ const Card = ({ card, state, isFlipped, isMatching, onClick, size }) => {
 
   return (
     <div onClick={onClick} className={containerClassName}>
-      <div className="card-back w-full h-full flex items-center justify-center rounded-lg absolute inset-0 bg-secondary text-text-secondary">
+      <div className="card-back w-full h-full flex items-center justify-center rounded-lg absolute inset-0 bg-secondary text-text-secondary backface-hidden transition-transform duration-500 ease-in-out">
         ?
       </div>
       <div className={frontClassName}>{card.value}</div>
