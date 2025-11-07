@@ -1,6 +1,5 @@
 import { createPortal } from "react-dom";
 import { useEffect } from "react";
-import Confetti from "react-confetti";
 
 const Modal = ({ isOpen, title, children, type = "default" }) => {
   useEffect(() => {
@@ -20,7 +19,7 @@ const Modal = ({ isOpen, title, children, type = "default" }) => {
   const titleColorClass =
     type === "success" ? "text-text-tertiary" : "text-text-secondary";
 
-  const modalContent = (
+  return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs">
       <div className="relative p-8 text-center rounded-xl max-w-md w-full mx-4 bg-tertiary shadow-xl">
         {title && (
@@ -31,31 +30,7 @@ const Modal = ({ isOpen, title, children, type = "default" }) => {
 
         <div className="text-text-primary">{children}</div>
       </div>
-    </div>
-  );
-
-  return createPortal(
-    <>
-      {type === "success" && (
-        <Confetti
-          width={window.innerWidth}
-          height={window.innerHeight}
-          recycle={false}
-          numberOfPieces={260}
-          gravity={0.35}
-          tweenDuration={2200}
-          initialVelocityX={6}
-          initialVelocityY={14}
-          style={{
-            position: "fixed",
-            inset: 0,
-            pointerEvents: "none",
-            zIndex: 60,
-          }}
-        />
-      )}
-      {modalContent}
-    </>,
+    </div>,
     document.body
   );
 };
