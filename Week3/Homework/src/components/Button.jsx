@@ -4,10 +4,10 @@ const Button = ({ children, isActive, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`px-6 py-2 rounded-full font-neodgm text-size-md transition-colors ${
+      className={`px-6 py-2 rounded-full text-md transition-all duration-200 hover:scale-105 ${
         isActive
           ? "bg-quaternary text-text-primary"
-          : "bg-transparent text-text-secondary hover:bg-secondary"
+          : "bg-tertiary text-text-tertiary hover:bg-secondary"
       }`}
     >
       {children}
