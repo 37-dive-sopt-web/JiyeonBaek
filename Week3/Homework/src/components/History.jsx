@@ -9,7 +9,7 @@ const History = ({ history }) => {
           아직 뒤집은 카드가 없어요
         </div>
       ) : (
-        <div className="flex flex-col gap-2 h-70">
+        <div className="flex flex-col gap-2 h-70 overflow-y-auto">
           {history.map((item, index) => (
             <div
               key={index}
