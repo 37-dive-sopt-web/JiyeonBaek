@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 let emojiId = 0;
 const EMOJIS = ["👽", "👾", "🛠️", "🤖", "🤩", "🌀", "👩🏻‍💻", "🔥"];
 
-{/* 클릭 이모지 컴포넌트 - 클릭 시 3개의 이모지가 랜덤한 위치에 표시되도록 */}
+// 클릭 이모지 컴포넌트 - 클릭 시 3개의 이모지가 랜덤한 위치에 표시되도록
 const ClickEmoji = () => {
   const [emojis, setEmojis] = useState([]);
 
