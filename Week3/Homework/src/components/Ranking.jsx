@@ -67,7 +67,7 @@ const Ranking = () => {
               <tbody>
                 {rankings.map((record, index) => (
                   <tr
-                    key={index}
+                    key={record.timestamp ?? index}
                     className="border-b border-secondary text-text-secondary"
                   >
                     <td className="px-4 py-2">{index + 1}</td>

@@ -10,7 +10,7 @@ const History = ({ history }) => {
         <div className="flex flex-col gap-2 h-70 overflow-y-auto">
           {history.map((item, index) => (
             <div
-              key={index}
+              key={item.id ?? index}
               className={`px-4 py-2 rounded-md border-2 ${
                 item.result === "success"
                   ? "bg-green-500/20 border-green-500 text-green-600"

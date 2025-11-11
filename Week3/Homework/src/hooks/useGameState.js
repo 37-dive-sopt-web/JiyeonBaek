@@ -23,6 +23,7 @@ const useGameState = () => {
 
   const hasSavedRef = useRef(false);
   const deadlineRef = useRef(null);
+  const historyIdRef = useRef(0);
 
   const cols = useMemo(() => {
     const grid = LEVEL_TO_GRID[level] ?? [4, 4];
@@ -67,6 +68,7 @@ const useGameState = () => {
     setStartTime(null);
     hasSavedRef.current = false;
     deadlineRef.current = null;
+    historyIdRef.current = 0;
   }, []);
 
   {
@@ -118,7 +120,9 @@ const useGameState = () => {
         return prevHistory;
       }
 
+      historyIdRef.current += 1;
       const nextEntry = {
+        id: historyIdRef.current,
         cards: [firstCard.value, secondCard.value],
         cardIds: [firstCard.id, secondCard.id],
         result,
