@@ -1,5 +1,3 @@
-import React from "react";
-
 const History = ({ history }) => {
   return (
     <div className="p-4 rounded-lg bg-secondary">
