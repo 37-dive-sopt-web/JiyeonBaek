@@ -22,6 +22,7 @@ const useGameState = () => {
   const [startTime, setStartTime] = useState(null);
 
   const hasSavedRef = useRef(false);
+  const deadlineRef = useRef(null);
 
   const cols = useMemo(() => {
     const grid = LEVEL_TO_GRID[level] ?? [4, 4];
@@ -65,6 +66,7 @@ const useGameState = () => {
     setMatchingCards(emptySet());
     setStartTime(null);
     hasSavedRef.current = false;
+    deadlineRef.current = null;
   }, []);
 
   {
@@ -90,8 +92,11 @@ const useGameState = () => {
   }
   const startGame = useCallback(() => {
     setGameStatus("playing");
-    setStartTime(Date.now());
-  }, []);
+    const now = Date.now();
+    setStartTime(now);
+    deadlineRef.current = now + getTimeLimit(level) * 1000;
+    setTimeLeft(getTimeLimit(level));
+  }, [level]);
 
   {
     /* 히스토리 중복 기록 방지 후 저장 */
@@ -229,6 +234,7 @@ const useGameState = () => {
     if ((gameStatus === "won" || gameStatus === "lost") && countdown === null) {
       setFlippedCards([]);
       setCountdown(3);
+      deadlineRef.current = null;
     }
   }, [countdown, gameStatus]);
 
@@ -268,22 +274,21 @@ const useGameState = () => {
     /* 게임 플레이 중 남은 시간을 10ms 간격으로 갱신 */
   }
   useEffect(() => {
-    if (gameStatus !== "playing" || !startTime) return;
+    if (gameStatus !== "playing" || !startTime || !deadlineRef.current) return;
 
     const timer = setInterval(() => {
-      const elapsed = (Date.now() - startTime) / 1000;
-      const remaining = getTimeLimit(level) - elapsed;
+      const remainingMs = deadlineRef.current - Date.now();
 
-      if (remaining <= 0) {
+      if (remainingMs <= 0) {
         setTimeLeft(0);
         setGameStatus("lost");
       } else {
-        setTimeLeft(remaining);
+        setTimeLeft(remainingMs / 1000);
       }
     }, 10);
 
     return () => clearInterval(timer);
-  }, [gameStatus, level, startTime]);
+  }, [gameStatus, startTime]);
 
   {
     /* 카드 상태 식별 함수 */
