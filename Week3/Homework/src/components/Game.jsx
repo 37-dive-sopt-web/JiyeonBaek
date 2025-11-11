@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { buildDeck, getTimeLimit } from "../utils/game";
+import { buildDeck, getTimeLimit, LEVEL_TO_GRID } from "../utils/game";
 import { saveRanking } from "../utils/storage";
 import Modal from "./Modal";
 import GameBoard from "./GameBoard";
@@ -7,7 +7,6 @@ import History from "./History";
 import Message from "./Message";
 import GameInfo from "./GameInfo";
 
-const LEVEL_TO_GRID = { 1: [4, 4], 2: [4, 6], 3: [6, 6] };
 const HISTORY_LIMIT = 20;
 
 const Game = () => {
