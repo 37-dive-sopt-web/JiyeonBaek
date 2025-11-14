@@ -151,7 +151,9 @@ const useGameState = () => {
           const secondCard = cardLookup.get(secondId);
 
           if (firstCard && secondCard && firstCard.value === secondCard.value) {
-            recordHistory(firstCard, secondCard, "success");
+            setTimeout(() => {
+              recordHistory(firstCard, secondCard, "success");
+            }, 500);
 
             setMatchingCards(new Set([firstId, secondId]));
             setTimeout(() => {
@@ -175,7 +177,10 @@ const useGameState = () => {
           }
 
           if (firstCard && secondCard) {
-            recordHistory(firstCard, secondCard, "fail");
+            // 카드 뒤집기 애니메이션(500ms) 완료 후 히스토리 기록
+            setTimeout(() => {
+              recordHistory(firstCard, secondCard, "fail");
+            }, 500);
           }
 
           setTimeout(() => {
