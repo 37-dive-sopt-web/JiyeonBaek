@@ -35,6 +35,7 @@ const Ranking = () => {
       <div className="flex justify-between items-start">
         <h2 className="text-2xl text-text-primary">랭킹보드</h2>
         <button
+          type="button"
           onClick={handleClear}
           className="bg-quaternary text-text-primary px-6 py-2 rounded-full hover:opacity-80 transition-opacity"
         >

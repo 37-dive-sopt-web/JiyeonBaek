@@ -42,6 +42,7 @@ const GameInfo = ({
       )}
 
       <button
+        type="button"
         onClick={onReset}
         className="w-full px-6 py-2 rounded-lg bg-quaternary text-text-primary hover:opacity-80 transition-opacity"
       >
