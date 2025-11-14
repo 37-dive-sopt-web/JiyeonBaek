@@ -32,7 +32,7 @@ const Ranking = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-start">
         <h2 className="text-2xl text-text-primary">랭킹보드</h2>
         <button
           onClick={handleClear}
