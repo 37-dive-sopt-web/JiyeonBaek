@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getRankings, clearRankings } from "../utils/storage";
+import { getRankings, clearRankings } from "../../utils/storage";
 
 const Ranking = () => {
   const [rankings, setRankings] = useState([]);

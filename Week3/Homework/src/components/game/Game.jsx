@@ -1,9 +1,9 @@
-import Modal from "./Modal";
+import Modal from "../common/Modal";
 import GameBoard from "./GameBoard";
 import History from "./History";
-import Message from "./Message";
+import Message from "../common/Message";
 import GameInfo from "./GameInfo";
-import useGameState from "../hooks/useGameState";
+import useGameState from "../../hooks/useGameState";
 
 const Game = () => {
   const {
