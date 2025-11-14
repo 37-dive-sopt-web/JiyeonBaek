@@ -1,8 +1,6 @@
 export const LEVEL_TO_GRID = { 1: [4, 4], 2: [4, 6], 3: [6, 6] };
 
-{
-  /* 배열 셔플 함수 */
-}
+// 배열 셔플 함수
 export const shuffle = (array, rng = Math.random) => {
   const arr = array.slice();
   for (let i = arr.length - 1; i > 0; i -= 1) {
@@ -12,9 +10,7 @@ export const shuffle = (array, rng = Math.random) => {
   return arr;
 };
 
-{
-  /* 덱 생성 함수 */
-}
+// 덱 생성 함수
 export const buildDeck = (level = 1) => {
   const [rows, cols] = LEVEL_TO_GRID[level] ?? [4, 4];
   const total = rows * cols;
@@ -34,9 +30,7 @@ export const buildDeck = (level = 1) => {
   return shuffle(duplicated);
 };
 
-{
-  /* 시간 제한 함수 */
-}
+// 시간 제한 함수
 export const getTimeLimit = (level) => {
   const TIME_LIMITS = { 1: 45, 2: 60, 3: 100 };
   return TIME_LIMITS[level] ?? 45;

@@ -4,9 +4,7 @@ import { getRankings, clearRankings } from "../../utils/storage";
 const Ranking = () => {
   const [rankings, setRankings] = useState([]);
 
-  {
-    /* 컴포넌트 마운트 시 랭킹 데이터 불러오기 및 정렬 */
-  }
+  // 컴포넌트 마운트 시 랭킹 데이터 불러오기 및 정렬
   useEffect(() => {
     const data = getRankings();
     const sorted = [...data].sort((a, b) => {
@@ -18,9 +16,7 @@ const Ranking = () => {
     setRankings(sorted);
   }, []);
 
-  {
-    /* 랭킹 초기화 버튼 클릭 시 랭킹 데이터 초기화 */
-  }
+  // 랭킹 초기화 버튼 클릭 시 랭킹 데이터 초기화
   const handleClear = () => {
     if (confirm("랭킹을 초기화하시겠습니까?")) {
       clearRankings();
@@ -28,9 +24,7 @@ const Ranking = () => {
     }
   };
 
-  {
-    /* 타임스탬프를 한국어 로케일 문자열로 변환 */
-  }
+  // 타임스탬프를 한국어 로케일 문자열로 변환
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
     return date.toLocaleString("ko-KR");
