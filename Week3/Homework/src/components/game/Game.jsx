@@ -27,16 +27,15 @@ const Game = () => {
     getCardState,
   } = useGameState();
 
-
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col">
       <h2 className="text-2xl text-text-primary">게임보드</h2>
       <div className="flex gap-6">
         {deck.length > 0 && (
           <div className="flex-1 flex items-center justify-center">
             <div
               style={{
-                minHeight: "750px",
+                minHeight: "500px",
                 display: "flex",
                 alignItems: "center",
               }}

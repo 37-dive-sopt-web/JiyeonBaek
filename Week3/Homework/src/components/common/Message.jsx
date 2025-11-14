@@ -7,14 +7,11 @@ const Message = ({ message, gameStatus }) => {
       : "";
 
   const displayMessage = message || defaultMessage;
-  const messageClass = message
-    ? "text-text-tertiary text-md"
-    : "text-text-tertiary text-sm";
 
   return (
-    <div className="p-4 rounded-lg bg-secondary min-h-32">
-      <h3 className="text-lg text-text-primary mb-2">안내 메시지</h3>
-      <p className={messageClass}>{displayMessage}</p>
+    <div className="p-4 rounded-lg bg-secondary">
+      <h3 className="text-md text-text-primary mb-2">안내 메시지</h3>
+      <p className="text-text-tertiary text-sm">{displayMessage}</p>
     </div>
   );
 };

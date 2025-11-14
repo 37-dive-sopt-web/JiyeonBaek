@@ -42,7 +42,7 @@ const Ranking = () => {
         </button>
       </div>
 
-      <div className="overflow-y-auto h-[750px]">
+      <div className="overflow-y-auto h-[520px]">
         {rankings.length === 0 ? (
           <div className="text-center py-8 text-text-secondary">
             아직 기록이 없습니다.

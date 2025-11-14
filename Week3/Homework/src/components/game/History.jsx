@@ -1,13 +1,13 @@
 const History = ({ history }) => {
   return (
     <div className="p-4 rounded-lg bg-secondary">
-      <h3 className="text-lg text-text-primary mb-2">최근 히스토리</h3>
+      <h3 className="text-md text-text-primary mb-2">최근 히스토리</h3>
       {history.length === 0 ? (
-        <div className="text-start text-sm h-70 text-text-tertiary">
+        <div className="text-start text-sm h-38 text-text-tertiary">
           아직 뒤집은 카드가 없어요
         </div>
       ) : (
-        <div className="flex flex-col gap-2 h-70 overflow-y-auto">
+        <div className="flex flex-col gap-2 h-38 overflow-y-auto">
           {history.map((item, index) => (
             <div
               key={item.id ?? index}

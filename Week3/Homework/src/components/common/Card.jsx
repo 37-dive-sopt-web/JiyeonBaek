@@ -2,7 +2,7 @@ import { useMemo } from "react";
 
 const Card = ({ card, state, isFlipped, isMatching, onClick, size }) => {
   const sizeClass =
-    size === "large" ? "w-44 h-44 text-4xl" : "w-28 h-28 text-2xl";
+    size === "large" ? "w-24 h-24 text-xl" : "w-24 h-20 text-base";
 
   const containerClassName = useMemo(
     () =>
