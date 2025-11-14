@@ -8,9 +8,9 @@ const History = ({ history }) => {
         </div>
       ) : (
         <div className="flex flex-col gap-2 h-38 overflow-y-auto">
-          {history.map((item, index) => (
+          {history.map((item) => (
             <div
-              key={item.id ?? index}
+              key={item.id}
               className={`px-4 py-2 rounded-md border-2 ${
                 item.result === "success"
                   ? "bg-green-500/20 border-green-500 text-green-600"
