@@ -35,3 +35,8 @@ export const getTimeLimit = (level) => {
   const TIME_LIMITS = { 1: 45, 2: 60, 3: 100 };
   return TIME_LIMITS[level] ?? 45;
 };
+
+// 시간 포맷팅 함수
+export const formattedTime = (timeLeft) => {
+  return timeLeft > 0 ? timeLeft.toFixed(2) : "0.00";
+};

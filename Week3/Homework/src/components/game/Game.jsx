@@ -4,6 +4,7 @@ import History from "./History";
 import Message from "../common/Message";
 import GameInfo from "./GameInfo";
 import useGameState from "../../hooks/useGameState";
+import { formattedTime } from "../../utils/game";
 
 const Game = () => {
   const {
@@ -26,7 +27,6 @@ const Game = () => {
     getCardState,
   } = useGameState();
 
-  const formattedTime = timeLeft > 0 ? timeLeft.toFixed(2) : "0.00";
 
   return (
     <div className="flex flex-col gap-6">
@@ -58,7 +58,7 @@ const Game = () => {
             <GameInfo
               level={level}
               gameStatus={gameStatus}
-              timeLeft={formattedTime}
+              timeLeft={formattedTime(timeLeft)}
               matchedPairs={matchedPairs}
               totalPairs={totalPairs}
               remainingPairs={remainingPairs}
