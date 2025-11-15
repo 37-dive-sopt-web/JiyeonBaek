@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Header from "./components/Header";
-import Game from "./components/Game";
-import Ranking from "./components/Ranking";
-import ClickEmoji from "./components/ClickEmoji";
+import Header from "./components/common/Header";
+import Game from "./components/game/Game";
+import Ranking from "./components/ranking/Ranking";
+import ClickEmoji from "./components/common/ClickEmoji";
 
 const App = () => {
   const [activeTab, setActiveTab] = useState("game");

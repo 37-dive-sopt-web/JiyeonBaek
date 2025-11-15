@@ -1,6 +1,6 @@
 const RANKING_KEY = "cardGameRanking";
 
-{/* 랭킹 데이터 불러오기 */}
+// 랭킹 데이터 불러오기
 export const getRankings = () => {
   try {
     const data = localStorage.getItem(RANKING_KEY);
@@ -11,7 +11,7 @@ export const getRankings = () => {
   }
 };
 
-{/* 랭킹 데이터 저장하기 */}
+// 랭킹 데이터 저장하기
 export const saveRanking = (record) => {
   try {
     const rankings = getRankings();
@@ -22,7 +22,7 @@ export const saveRanking = (record) => {
   }
 };
 
-{/* 랭킹 데이터 초기화 */}
+// 랭킹 데이터 초기화
 export const clearRankings = () => {
   try {
     localStorage.removeItem(RANKING_KEY);

@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { getRankings, clearRankings } from "../utils/storage";
+import { getRankings, clearRankings } from "../../utils/storage";
 
 const Ranking = () => {
   const [rankings, setRankings] = useState([]);
 
-  {
-    /* 컴포넌트 마운트 시 랭킹 데이터 불러오기 및 정렬 */
-  }
+  // 컴포넌트 마운트 시 랭킹 데이터 불러오기 및 정렬
   useEffect(() => {
     const data = getRankings();
     const sorted = [...data].sort((a, b) => {
@@ -18,9 +16,7 @@ const Ranking = () => {
     setRankings(sorted);
   }, []);
 
-  {
-    /* 랭킹 초기화 버튼 클릭 시 랭킹 데이터 초기화 */
-  }
+  // 랭킹 초기화 버튼 클릭 시 랭킹 데이터 초기화
   const handleClear = () => {
     if (confirm("랭킹을 초기화하시겠습니까?")) {
       clearRankings();
@@ -28,9 +24,7 @@ const Ranking = () => {
     }
   };
 
-  {
-    /* 타임스탬프를 한국어 로케일 문자열로 변환 */
-  }
+  // 타임스탬프를 한국어 로케일 문자열로 변환
   const formatDate = (timestamp) => {
     const date = new Date(timestamp);
     return date.toLocaleString("ko-KR");
@@ -38,9 +32,10 @@ const Ranking = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-start">
         <h2 className="text-2xl text-text-primary">랭킹보드</h2>
         <button
+          type="button"
           onClick={handleClear}
           className="bg-quaternary text-text-primary px-6 py-2 rounded-full hover:opacity-80 transition-opacity"
         >
@@ -48,7 +43,7 @@ const Ranking = () => {
         </button>
       </div>
 
-      <div className="overflow-y-auto h-[750px]">
+      <div className="overflow-y-auto h-[520px]">
         {rankings.length === 0 ? (
           <div className="text-center py-8 text-text-secondary">
             아직 기록이 없습니다.
@@ -67,7 +62,7 @@ const Ranking = () => {
               <tbody>
                 {rankings.map((record, index) => (
                   <tr
-                    key={index}
+                    key={record.timestamp ?? index}
                     className="border-b border-secondary text-text-secondary"
                   >
                     <td className="px-4 py-2">{index + 1}</td>

@@ -25,23 +25,24 @@ const GameInfo = ({
       </div>
 
       {(gameStatus === "ready" || gameStatus === "playing") && (
-        <>
-          <div className="text-lg text-text-primary">
-            남은 시간: <span className="text-xl font-bold">{timeLeft}초</span>
-          </div>
-          <div className="text-lg text-text-primary">
+        <div className="text-md text-text-primary">
+          <p>
+            남은 시간: <span className="font-bold">{timeLeft}초</span>
+          </p>
+          <p>
             성공한 짝:{" "}
-            <span className="text-xl font-bold">
+            <span className="font-bold">
               {matchedPairs}/{totalPairs}
             </span>
-          </div>
-          <div className="text-lg text-text-primary">
-            남은 짝: <span className="text-xl font-bold">{remainingPairs}</span>
-          </div>
-        </>
+          </p>
+          <p>
+            남은 짝: <span className="font-bold">{remainingPairs}</span>
+          </p>
+        </div>
       )}
 
       <button
+        type="button"
         onClick={onReset}
         className="w-full px-6 py-2 rounded-lg bg-quaternary text-text-primary hover:opacity-80 transition-opacity"
       >
