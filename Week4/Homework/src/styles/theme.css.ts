@@ -15,21 +15,24 @@ export const [themeClass, themeVars] = createTheme({
       200: "#E8E6E1",
       300: "#D6D3CE",
       400: "#B1ADA7",
+      500: "#8B817D",
     },
   },
 
   font: {
     main: "Noto Sans KR, sans-serif",
     size: {
-      sm: "0.8rem",
+      xs: "0.8rem",
+      sm: "1rem",
       md: "1.6rem",
       lg: "2.4rem",
     },
   },
 
   space: {
-    sm: "0.8rem",
-    md: "1.6rem",
-    lg: "2.4rem",
+    xs: "0.6rem",
+    sm: "1rem",
+    md: "1.4rem",
+    lg: "2rem",
   },
 });

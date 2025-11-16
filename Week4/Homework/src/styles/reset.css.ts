@@ -23,7 +23,14 @@ globalStyle("img, picture, video, canvas, svg", {
 });
 
 globalStyle("input, button, textarea, select", {
-  font: "inherit",
+  outline: "none",
+  border: "none",
+  backgroundColor: "transparent",
+});
+
+globalStyle("button", {
+  cursor: "pointer",
+  border: "none",
 });
 
 globalStyle("a", {

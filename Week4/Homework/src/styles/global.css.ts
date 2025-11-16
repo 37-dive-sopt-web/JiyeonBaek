@@ -10,7 +10,3 @@ globalStyle("body", {
   backgroundColor: themeVars.color.bg,
   color: themeVars.color.text,
 });
-
-globalStyle("button", {
-  cursor: "pointer",
-});
