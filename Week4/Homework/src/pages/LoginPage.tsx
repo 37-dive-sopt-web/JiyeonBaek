@@ -3,11 +3,15 @@ import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import { link, title } from "../styles/typography.css";
 import { authButtonContainer, authForm, authContainer } from "./AuthPage.css";
+import { useLoginForm } from "../hooks/useLoginForm";
 
 export const LoginPage = () => {
+  const { id, password, isLoginValid, handleChangeId, handleChangePassword } =
+    useLoginForm();
+
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("로그인");
+    console.log("로그인", { id, password });
     // TODO: 로그인 API 호출
   };
 
@@ -15,14 +19,26 @@ export const LoginPage = () => {
     <main className={authContainer}>
       <h1 className={title}>로그인</h1>
       <form className={authForm} onSubmit={handleLogin}>
-        <Input type="text" label="아이디" placeholder="아이디를 입력해주세요" />
+        <Input
+          type="text"
+          label="아이디"
+          placeholder="아이디를 입력해주세요"
+          name="id"
+          value={id}
+          onChange={handleChangeId}
+        />
         <Input
           type="password"
           label="비밀번호"
           placeholder="비밀번호를 입력해주세요"
+          name="password"
+          value={password}
+          onChange={handleChangePassword}
         />
         <div className={authButtonContainer}>
-          <Button type="submit">로그인</Button>
+          <Button type="submit" disabled={!isLoginValid}>
+            로그인
+          </Button>
           <Link className={link} to="/signup">
             회원가입
           </Link>
