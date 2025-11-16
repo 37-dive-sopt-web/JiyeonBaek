@@ -1,0 +1,51 @@
+import type { FormEvent } from "react";
+import Button from "../common/Button";
+import Input from "../common/Input";
+import type { Step2Props } from "../../type/signup";
+import { isPasswordMismatch } from "../../utils/validation";
+import { authForm } from "../../pages/AuthPage.css";
+
+const Step2 = ({
+  password,
+  passwordConfirm,
+  onChangePassword,
+  onChangePasswordConfirm,
+  onNext,
+  isValid,
+}: Step2Props) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onNext?.();
+  };
+
+  const passwordMismatch = isPasswordMismatch(password, passwordConfirm);
+
+  return (
+    <form onSubmit={handleSubmit} className={authForm}>
+      <Input
+        type="password"
+        label="비밀번호"
+        placeholder="비밀번호를 입력해주세요"
+        name="password"
+        value={password}
+        onChange={onChangePassword}
+      />
+      <Input
+        type="password"
+        label="비밀번호 확인"
+        placeholder="비밀번호를 입력해주세요"
+        name="passwordConfirm"
+        value={passwordConfirm}
+        onChange={onChangePasswordConfirm}
+        errorMessage={
+          passwordMismatch ? "비밀번호가 일치하지 않습니다." : undefined
+        }
+      />
+      <Button type="submit" disabled={!isValid}>
+        다음
+      </Button>
+    </form>
+  );
+};
+
+export default Step2;
