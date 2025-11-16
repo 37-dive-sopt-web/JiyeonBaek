@@ -20,7 +20,7 @@ export const fieldWrapper = style({
   gap: "0.8rem",
   padding: `0 ${themeVars.space.md}`,
   height: "3rem",
-  borderRadius: "999px",
+  borderRadius: themeVars.space.sm,
   backgroundColor: themeVars.color.gray[100],
 });
 

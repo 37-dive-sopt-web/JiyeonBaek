@@ -24,8 +24,8 @@ export const [themeClass, themeVars] = createTheme({
     size: {
       xs: "0.8rem",
       sm: "1rem",
-      md: "1.6rem",
-      lg: "2.4rem",
+      md: "1.4rem",
+      lg: "2rem",
     },
   },
 
@@ -34,5 +34,11 @@ export const [themeClass, themeVars] = createTheme({
     sm: "1rem",
     md: "1.4rem",
     lg: "2rem",
+  },
+
+  transition: {
+    sm: "0.3s ease",
+    md: "0.5s ease",
+    lg: "0.7s ease",
   },
 });
