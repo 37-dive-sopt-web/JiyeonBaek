@@ -1,5 +1,8 @@
+import { themeClass } from "./styles/theme.css";
+import "./styles/global.css.ts";
+
 function App() {
-  return <>hi</>;
+  return <div className={themeClass}>hi</div>;
 }
 
 export default App;
