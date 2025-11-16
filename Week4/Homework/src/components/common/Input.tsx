@@ -11,7 +11,15 @@ import {
   error,
 } from "./Input.css";
 
-const Input = ({ type, label, errorMessage, placeholder }: InputProps) => {
+const Input = ({
+  type,
+  label,
+  errorMessage,
+  placeholder,
+  name,
+  value,
+  onChange,
+}: InputProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const isPassword = type === "password";
@@ -29,7 +37,14 @@ const Input = ({ type, label, errorMessage, placeholder }: InputProps) => {
     <div className={wrapper}>
       <label className={labelText}>{label}</label>
       <div className={fieldWrapper}>
-        <input className={input} type={inputType} placeholder={placeholder} />
+        <input
+          className={input}
+          type={inputType}
+          placeholder={placeholder}
+          name={name}
+          value={value}
+          onChange={onChange}
+        />
         {isPassword && (
           <button type="button" onClick={handleTogglePassword}>
             {isPasswordVisible ? (

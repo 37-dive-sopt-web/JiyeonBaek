@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { themeVars } from "../styles/theme.css";
 
-export const loginContainer = style({
+export const authContainer = style({
   display: "flex",
   flexDirection: "column",
   gap: themeVars.space.lg,
@@ -12,15 +12,25 @@ export const loginContainer = style({
   height: "100vh",
 });
 
-export const loginForm = style({
+export const authForm = style({
   display: "flex",
   flexDirection: "column",
   gap: themeVars.space.lg,
 });
 
-export const loginButtonContainer = style({
+export const authButtonContainer = style({
   display: "flex",
   flexDirection: "column",
   gap: themeVars.space.xs,
   alignItems: "center",
+});
+
+export const authLinkContainer = style({
+  display: "flex",
+  gap: themeVars.space.xs,
+});
+
+export const backIcon = style({
+  width: 20,
+  height: 20,
 });
