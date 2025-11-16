@@ -1,5 +1,6 @@
 import { themeClass } from "./styles/theme.css";
 import "./styles/global.css.ts";
+import "./styles/reset.css.ts";
 
 function App() {
   return <div className={themeClass}>hi</div>;
