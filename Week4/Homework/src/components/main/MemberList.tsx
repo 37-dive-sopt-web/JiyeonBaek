@@ -1,4 +1,4 @@
-import type { MemberListProps } from "../../type/membetList";
+import type { MemberListProps } from "../../type/member";
 import Button from "../common/Button";
 import Input from "../common/Input";
 import {
@@ -14,6 +14,8 @@ import {
 const MemberList = ({
   memberId,
   searchedMember,
+  error,
+  isLoading,
   isSearchButtonEnabled,
   handleChangeMemberId,
   handleSearch,
@@ -30,10 +32,15 @@ const MemberList = ({
           value={memberId}
           onChange={handleChangeMemberId}
         />
-        <Button type="submit" disabled={!isSearchButtonEnabled}>
-          조회
+        <Button type="submit" disabled={!isSearchButtonEnabled || isLoading}>
+          {isLoading ? "조회 중..." : "조회"}
         </Button>
       </form>
+      {error && (
+        <p style={{ color: "red", fontSize: "1.2rem", marginTop: "1rem" }}>
+          {error}
+        </p>
+      )}
       {searchedMember && (
         <div className={memberListInfoContainer}>
           <div className={memberListInfo}>
