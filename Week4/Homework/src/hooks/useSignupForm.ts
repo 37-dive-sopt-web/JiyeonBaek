@@ -81,9 +81,12 @@ export const useSignupForm = () => {
         age: Number(form.age),
       });
 
+      alert("회원가입에 성공했습니다.");
       navigate("/login");
     } catch (error: unknown) {
-      setError(getErrorMessage(error, "회원가입에 실패했습니다."));
+      const errorMessage = getErrorMessage(error, "회원가입에 실패했습니다.");
+      setError(errorMessage);
+      alert(errorMessage);
     } finally {
       setIsLoading(false);
     }
