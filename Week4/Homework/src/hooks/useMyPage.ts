@@ -69,6 +69,18 @@ export const useMyPage = () => {
     }
   }, [requireAuth, navigate]);
 
+  const refreshUserInfo = useCallback(async () => {
+    const userIdNum = requireAuth();
+    if (userIdNum === null) return;
+
+    try {
+      const response = await getMemberInfo(userIdNum);
+      setUserInfo(response);
+    } catch (error) {
+      navigate("/login");
+    }
+  }, [requireAuth, navigate]);
+
   const myInfoProps = useMemo(() => {
     if (!userInfo) return null;
     return {
@@ -89,6 +101,7 @@ export const useMyPage = () => {
     handleMemberSearch,
     handleLogout,
     handleWithdrawal,
+    refreshUserInfo,
     myInfoProps,
   };
 };

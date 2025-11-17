@@ -13,6 +13,7 @@ export const MyPage = () => {
     handleMemberSearch,
     handleLogout,
     handleWithdrawal,
+    refreshUserInfo,
     myInfoProps,
   } = useMyPage();
 
@@ -51,6 +52,7 @@ export const MyPage = () => {
           name={myInfoProps.name}
           email={myInfoProps.email}
           age={myInfoProps.age}
+          onUpdateSuccess={refreshUserInfo}
         />
       )}
       {activeTab === "memberList" && (

@@ -12,7 +12,14 @@ import {
 import { errorMessage, successMessage } from "../../styles/message.css";
 import type { MyInfoProps } from "../../type/myInfo";
 
-const MyInfo = ({ id, username, name, email, age }: MyInfoProps) => {
+const MyInfo = ({
+  id,
+  username,
+  name,
+  email,
+  age,
+  onUpdateSuccess,
+}: MyInfoProps) => {
   const {
     form,
     error,
@@ -26,6 +33,7 @@ const MyInfo = ({ id, username, name, email, age }: MyInfoProps) => {
     name,
     email,
     age,
+    onUpdateSuccess,
   });
 
   return (
