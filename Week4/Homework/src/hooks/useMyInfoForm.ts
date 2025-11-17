@@ -1,10 +1,12 @@
 import { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import type { MyInfoFormState, UseMyInfoFormProps } from "../type/myInfo";
 import { updateMemberInfo } from "../apis/member";
 import { parseNumber } from "../utils/number";
 import { getErrorMessage } from "../utils/error";
 
 export const useMyInfoForm = ({ id, name, email, age }: UseMyInfoFormProps) => {
+  const navigate = useNavigate();
   const [form, setForm] = useState<MyInfoFormState>({
     name,
     email,
@@ -75,7 +77,7 @@ export const useMyInfoForm = ({ id, name, email, age }: UseMyInfoFormProps) => {
 
       setIsSuccess(true);
       setTimeout(() => {
-        window.location.reload();
+        navigate(0);
       }, 1000);
     } catch (error: unknown) {
       setError(getErrorMessage(error, "정보 수정에 실패했습니다."));

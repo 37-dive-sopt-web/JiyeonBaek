@@ -5,9 +5,9 @@ import MemberList from "../components/main/MemberList";
 import MyInfo from "../components/main/MyInfo";
 import { useMemberList } from "../hooks/useMemberList";
 import { getMemberInfo, deleteMember } from "../apis/member";
-import { getUserId, removeUserId } from "../utils/storage";
-import { parseNumber } from "../utils/number";
+import { removeUserId } from "../utils/storage";
 import { getErrorMessage } from "../utils/error";
+import { useRequireAuth } from "../utils/navigation";
 import type { TabType } from "../type/components";
 import type { MemberInfo } from "../type/member";
 
@@ -16,6 +16,7 @@ export const MyPage = () => {
   const [userInfo, setUserInfo] = useState<MemberInfo | null>(null);
   const [isLoadingUserInfo, setIsLoadingUserInfo] = useState(true);
   const navigate = useNavigate();
+  const { requireAuth } = useRequireAuth();
 
   const {
     memberId,
@@ -27,12 +28,8 @@ export const MyPage = () => {
     isSearchButtonEnabled,
   } = useMemberList();
 
-  const handleMyInfo = () => {
-    setActiveTab("myInfo");
-  };
-
-  const handleMemberSearch = () => {
-    setActiveTab("memberList");
+  const handleTabChange = (tab: TabType) => {
+    setActiveTab(tab);
   };
 
   const handleLogout = () => {
@@ -42,20 +39,16 @@ export const MyPage = () => {
 
   useEffect(() => {
     const fetchUserInfo = async () => {
-      const userId = getUserId();
-      if (!userId) {
-        navigate("/login");
+      const userIdNum = requireAuth();
+      if (userIdNum === null) {
+        setIsLoadingUserInfo(false);
         return;
       }
 
       try {
-        const userIdNum = parseNumber(userId);
-        if (userIdNum !== null) {
-          const response = await getMemberInfo(userIdNum);
-          setUserInfo(response);
-        }
+        const response = await getMemberInfo(userIdNum);
+        setUserInfo(response);
       } catch (error) {
-        console.error("사용자 정보 조회 실패", error);
         navigate("/login");
       } finally {
         setIsLoadingUserInfo(false);
@@ -63,26 +56,20 @@ export const MyPage = () => {
     };
 
     fetchUserInfo();
-  }, [navigate]);
+  }, [navigate, requireAuth]);
 
   const handleWithdrawal = async () => {
-    const userId = getUserId();
-    if (!userId) {
-      navigate("/login");
-      return;
-    }
+    const userIdNum = requireAuth();
+    if (userIdNum === null) return;
 
     if (!window.confirm("정말 회원탈퇴를 하시겠습니까?")) {
       return;
     }
 
     try {
-      const userIdNum = parseNumber(userId);
-      if (userIdNum !== null) {
-        await deleteMember(userIdNum);
-        removeUserId();
-        navigate("/login");
-      }
+      await deleteMember(userIdNum);
+      removeUserId();
+      navigate("/login");
     } catch (error: unknown) {
       alert(getErrorMessage(error, "회원탈퇴에 실패했습니다."));
     }
@@ -101,8 +88,8 @@ export const MyPage = () => {
       <Header
         userName={userInfo.name}
         activeTab={activeTab}
-        handleMyInfo={handleMyInfo}
-        handleMemberSearch={handleMemberSearch}
+        handleMyInfo={() => handleTabChange("myInfo")}
+        handleMemberSearch={() => handleTabChange("memberList")}
         handleLogout={handleLogout}
         handleWithdrawal={handleWithdrawal}
       />
