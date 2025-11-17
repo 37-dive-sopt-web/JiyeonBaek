@@ -1,4 +1,4 @@
-import type { SignupFormState } from "../type/signup";
+import type { SignupFormState } from "../type/auth";
 
 export const INITIAL_SIGNUP_FORM: SignupFormState = {
   id: "",
