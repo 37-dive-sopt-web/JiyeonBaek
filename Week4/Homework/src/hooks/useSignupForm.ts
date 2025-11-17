@@ -11,6 +11,7 @@ import {
 } from "../utils/validation";
 import { signup } from "../apis/auth";
 import { getErrorMessage } from "../utils/error";
+import { sanitizeAgeInput } from "../utils/form";
 
 export const useSignupForm = () => {
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -19,7 +20,6 @@ export const useSignupForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  // 뒤로 가기
   const handleBack = () => {
     if (step === 1) {
       navigate("/login");
@@ -29,19 +29,17 @@ export const useSignupForm = () => {
     setStep((prev) => (prev > 1 ? ((prev - 1) as 1 | 2 | 3) : prev));
   };
 
-  // 다음 단계로 이동
   const handleNextStep = () => {
     setStep((prev) => (prev < 3 ? ((prev + 1) as 1 | 2 | 3) : prev));
   };
 
-  // 정보 변경
   const handleChange =
     (field: keyof SignupFormState) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
       let value = e.target.value;
 
       if (field === "age") {
-        value = value.replace(/\D/g, "");
+        value = sanitizeAgeInput(value);
       }
 
       setForm((prev) => ({
@@ -51,7 +49,6 @@ export const useSignupForm = () => {
       setError(null);
     };
 
-  // 유효성 검사
   const isStep1Valid = isValidId(form.id);
   const idErrorMessage = getIdErrorMessage(form.id);
 
@@ -68,13 +65,11 @@ export const useSignupForm = () => {
     form.age.trim().length > 0 &&
     isStep2Valid;
 
-  // 이메일 유효성 검사 메시지
   const emailErrorMessage =
     form.email.length > 0 && !isValidEmail(form.email)
       ? "올바른 이메일 형식이 아닙니다."
       : undefined;
 
-  // 회원가입
   const handleSignup = async () => {
     if (!isStep3Valid) return;
 

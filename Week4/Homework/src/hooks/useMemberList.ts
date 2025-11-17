@@ -11,13 +11,11 @@ export const useMemberList = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // 회원 ID 변경
   const handleChangeMemberId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMemberId(e.target.value);
     setError(null);
   };
 
-  // 회원 조회
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!memberId.trim()) return;
@@ -48,7 +46,6 @@ export const useMemberList = () => {
     }
   };
 
-  // 검색 버튼 활성화 여부
   const isSearchButtonEnabled = memberId.trim().length > 0;
 
   return {

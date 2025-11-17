@@ -3,6 +3,7 @@ import type { MyInfoFormState, UseMyInfoFormProps } from "../type/myInfo";
 import { updateMemberInfo } from "../apis/member";
 import { parseNumber } from "../utils/number";
 import { getErrorMessage } from "../utils/error";
+import { sanitizeAgeInput } from "../utils/form";
 
 export const useMyInfoForm = ({
   id,
@@ -38,14 +39,13 @@ export const useMyInfoForm = ({
     setIsSuccess(false);
   }, [name, email, age]);
 
-  // 정보 변경
   const handleChange =
     (field: keyof MyInfoFormState) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
       let value = e.target.value;
 
       if (field === "age") {
-        value = value.replace(/\D/g, "");
+        value = sanitizeAgeInput(value);
       }
 
       setForm((prev) => ({
@@ -56,7 +56,6 @@ export const useMyInfoForm = ({
       setIsSuccess(false);
     };
 
-  // 정보 수정
   const handleUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!isUpdateButtonEnabled) return;
@@ -69,7 +68,6 @@ export const useMyInfoForm = ({
       const userIdNum = parseNumber(id);
       if (userIdNum === null) {
         setError("올바른 사용자 ID가 아닙니다.");
-        setIsLoading(false);
         return;
       }
 
@@ -95,19 +93,16 @@ export const useMyInfoForm = ({
     }
   };
 
-  // 빈 필드 여부
   const hasEmptyField =
     form.name.trim().length === 0 ||
     form.email.trim().length === 0 ||
     form.age.trim().length === 0;
 
-  // 변경 여부
   const hasChanged =
     form.name !== initialForm.name ||
     form.email !== initialForm.email ||
     form.age !== initialForm.age;
 
-  // 수정 버튼 활성화 여부
   const isUpdateButtonEnabled = !hasEmptyField && hasChanged;
 
   return {

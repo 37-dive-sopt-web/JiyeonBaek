@@ -12,19 +12,16 @@ export const useLoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  // 아이디 변경
   const handleChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setId(e.target.value);
     setError(null);
   };
 
-  // 비밀번호 변경
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
     setError(null);
   };
 
-  // 로그인
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!isLoginValid) return;
@@ -50,7 +47,6 @@ export const useLoginForm = () => {
     }
   };
 
-  // 로그인 유효성 검사
   const isLoginValid = isValidId(id) && password.length > 0;
 
   return {

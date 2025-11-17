@@ -1,8 +1,8 @@
-import type { FormEvent } from "react";
 import Button from "../common/Button";
 import Input from "../common/Input";
 import type { Step1Props } from "../../type/auth";
 import { authForm } from "../../pages/AuthPage.css";
+import { createStepSubmitHandler } from "../../utils/step";
 
 const Step1 = ({
   id,
@@ -11,10 +11,7 @@ const Step1 = ({
   isValid,
   errorMessage,
 }: Step1Props) => {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    onNext?.();
-  };
+  const handleSubmit = createStepSubmitHandler(onNext);
 
   return (
     <form onSubmit={handleSubmit} className={authForm}>

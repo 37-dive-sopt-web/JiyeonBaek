@@ -1,9 +1,9 @@
-import type { FormEvent } from "react";
 import Button from "../common/Button";
 import Input from "../common/Input";
 import type { Step2Props } from "../../type/auth";
 import { isPasswordMismatch } from "../../utils/validation";
 import { authForm } from "../../pages/AuthPage.css";
+import { createStepSubmitHandler } from "../../utils/step";
 
 const Step2 = ({
   password,
@@ -14,10 +14,7 @@ const Step2 = ({
   isValid,
   passwordErrorMessage,
 }: Step2Props) => {
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    onNext?.();
-  };
+  const handleSubmit = createStepSubmitHandler(onNext);
 
   const passwordMismatch = isPasswordMismatch(password, passwordConfirm);
 
