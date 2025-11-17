@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Step1 from "../components/signup/Step1";
 import Step2 from "../components/signup/Step2";
 import Step3 from "../components/signup/Step3";
@@ -8,10 +6,10 @@ import BackIcon from "../assets/icons/arrow-back.svg?react";
 import { useSignupForm } from "../hooks/useSignupForm";
 import { authContainer, authLinkContainer, backIcon } from "./AuthPage.css";
 import { Link } from "react-router-dom";
-import { isLoggedIn } from "../utils/storage";
+import { useAuthRedirect } from "../hooks/useAuthRedirect";
 
 export const SignupPage = () => {
-  const navigate = useNavigate();
+  useAuthRedirect();
   const {
     step,
     form,
@@ -26,12 +24,6 @@ export const SignupPage = () => {
     handleChange,
     handleSignup,
   } = useSignupForm();
-
-  useEffect(() => {
-    if (isLoggedIn()) {
-      navigate("/mypage", { replace: true });
-    }
-  }, [navigate]);
 
   return (
     <main className={authContainer}>

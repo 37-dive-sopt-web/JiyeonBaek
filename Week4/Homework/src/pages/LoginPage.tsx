@@ -1,14 +1,13 @@
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import { link, title } from "../styles/typography.css";
 import { authButtonContainer, authForm, authContainer } from "./AuthPage.css";
 import { useLoginForm } from "../hooks/useLoginForm";
-import { isLoggedIn } from "../utils/storage";
+import { useAuthRedirect } from "../hooks/useAuthRedirect";
 
 export const LoginPage = () => {
-  const navigate = useNavigate();
+  useAuthRedirect();
   const {
     id,
     password,
@@ -19,12 +18,6 @@ export const LoginPage = () => {
     handleChangePassword,
     handleLogin,
   } = useLoginForm();
-
-  useEffect(() => {
-    if (isLoggedIn()) {
-      navigate("/mypage", { replace: true });
-    }
-  }, [navigate]);
 
   return (
     <main className={authContainer}>
