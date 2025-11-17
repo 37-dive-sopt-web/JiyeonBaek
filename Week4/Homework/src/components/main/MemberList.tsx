@@ -10,6 +10,7 @@ import {
   memberListInfoValue,
   memberListTitle,
 } from "./MemberList.css";
+import { errorMessage } from "../../styles/message.css";
 
 const MemberList = ({
   memberId,
@@ -36,11 +37,7 @@ const MemberList = ({
           {isLoading ? "조회 중..." : "조회"}
         </Button>
       </form>
-      {error && (
-        <p style={{ color: "red", fontSize: "1.2rem", marginTop: "1rem" }}>
-          {error}
-        </p>
-      )}
+      {error && <p className={errorMessage}>{error}</p>}
       {searchedMember && (
         <div className={memberListInfoContainer}>
           <div className={memberListInfo}>

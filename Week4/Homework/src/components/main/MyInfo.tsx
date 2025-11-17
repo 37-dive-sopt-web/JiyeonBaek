@@ -9,6 +9,7 @@ import {
   myInfoForm,
   myInfoTitle,
 } from "./MyInfo.css";
+import { errorMessage, successMessage } from "../../styles/message.css";
 import type { MyInfoProps } from "../../type/myInfo";
 
 const MyInfo = ({ id, username, name, email, age }: MyInfoProps) => {
@@ -59,15 +60,9 @@ const MyInfo = ({ id, username, name, email, age }: MyInfoProps) => {
           name="age"
           onChange={handleChange("age")}
         />
-        {error && (
-          <p style={{ color: "red", fontSize: "1.2rem", marginTop: "1rem" }}>
-            {error}
-          </p>
-        )}
+        {error && <p className={errorMessage}>{error}</p>}
         {isSuccess && (
-          <p style={{ color: "green", fontSize: "1.2rem", marginTop: "1rem" }}>
-            정보가 성공적으로 수정되었습니다.
-          </p>
+          <p className={successMessage}>정보가 성공적으로 수정되었습니다.</p>
         )}
         <Button type="submit" disabled={!isUpdateButtonEnabled || isLoading}>
           {isLoading ? "저장 중..." : "저장"}

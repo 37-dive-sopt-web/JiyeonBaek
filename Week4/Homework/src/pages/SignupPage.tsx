@@ -5,6 +5,7 @@ import { link, title } from "../styles/typography.css";
 import BackIcon from "../assets/icons/arrow-back.svg?react";
 import { useSignupForm } from "../hooks/useSignupForm";
 import { authContainer, authLinkContainer, backIcon } from "./AuthPage.css";
+import { errorMessage } from "../styles/message.css";
 import { Link } from "react-router-dom";
 import { useAuthRedirect } from "../hooks/useAuthRedirect";
 
@@ -63,11 +64,7 @@ export const SignupPage = () => {
             emailErrorMessage={emailErrorMessage}
             isLoading={isLoading}
           />
-          {error && (
-            <p style={{ color: "red", fontSize: "1.2rem", marginTop: "1rem" }}>
-              {error}
-            </p>
-          )}
+          {error && <p className={errorMessage}>{error}</p>}
         </>
       )}
       <div className={authLinkContainer}>

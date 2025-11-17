@@ -3,6 +3,7 @@ import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import { link, title } from "../styles/typography.css";
 import { authButtonContainer, authForm, authContainer } from "./AuthPage.css";
+import { errorMessage } from "../styles/message.css";
 import { useLoginForm } from "../hooks/useLoginForm";
 import { useAuthRedirect } from "../hooks/useAuthRedirect";
 
@@ -39,7 +40,7 @@ export const LoginPage = () => {
           value={password}
           onChange={handleChangePassword}
         />
-        {error && <p style={{ color: "red", fontSize: "1.2rem" }}>{error}</p>}
+        {error && <p className={errorMessage}>{error}</p>}
         <div className={authButtonContainer}>
           <Button type="submit" disabled={!isLoginValid || isLoading}>
             {isLoading ? "로그인 중..." : "로그인"}
