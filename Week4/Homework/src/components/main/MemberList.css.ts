@@ -36,7 +36,7 @@ export const memberListInfo = style({
 export const memberListInfoLabel = style({
   fontSize: themeVars.font.size.sm,
   fontWeight: "500",
-  color: themeVars.color.gray[500],
+  color: themeVars.color.gray[400],
 });
 
 export const memberListInfoValue = style({

@@ -10,7 +10,7 @@ export const wrapper = style({
 export const labelText = style({
   fontSize: themeVars.font.size.sm,
   fontWeight: "500",
-  color: themeVars.color.gray[500],
+  color: themeVars.color.gray[400],
   marginLeft: "0.5rem",
 });
 
@@ -30,7 +30,7 @@ export const input = style({
   color: themeVars.color.text,
   selectors: {
     "&::placeholder": {
-      color: themeVars.color.gray[400],
+      color: themeVars.color.gray[300],
     },
   },
 });

@@ -17,9 +17,9 @@ export const button = style({
       transition: themeVars.transition.sm,
     },
     "&:disabled": {
-      backgroundColor: themeVars.color.gray[300],
+      backgroundColor: themeVars.color.gray[200],
       cursor: "not-allowed",
-      color: themeVars.color.gray[500],
+      color: themeVars.color.gray[400],
     },
   },
 });

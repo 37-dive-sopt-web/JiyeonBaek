@@ -12,19 +12,15 @@ export const [themeClass, themeVars] = createTheme({
 
     gray: {
       100: "#F7F7F5",
-      200: "#E8E6E1",
-      300: "#D6D3CE",
-      400: "#B1ADA7",
-      500: "#8B817D",
+      200: "#D6D3CE",
+      300: "#B1ADA7",
+      400: "#8B817D",
     },
   },
 
   font: {
-    main: "Noto Sans KR, sans-serif",
     size: {
-      xs: "0.8rem",
       sm: "1rem",
-      md: "1.4rem",
       lg: "2rem",
     },
   },
@@ -38,7 +34,5 @@ export const [themeClass, themeVars] = createTheme({
 
   transition: {
     sm: "0.3s ease",
-    md: "0.5s ease",
-    lg: "0.7s ease",
   },
 });

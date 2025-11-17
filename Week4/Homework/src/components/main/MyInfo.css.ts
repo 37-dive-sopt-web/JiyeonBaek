@@ -26,7 +26,7 @@ export const myIdInfo = style({
 export const myIdInfoLabel = style({
   fontSize: themeVars.font.size.sm,
   fontWeight: "500",
-  color: themeVars.color.gray[500],
+  color: themeVars.color.gray[400],
 });
 
 export const myIdInfoValue = style({
