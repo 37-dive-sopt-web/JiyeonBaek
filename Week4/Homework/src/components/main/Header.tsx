@@ -6,7 +6,7 @@ import {
   navBtn,
   navBtnActive,
 } from "./Header.css";
-import type { HeaderProps } from "../../type/header";
+import type { HeaderProps } from "../../type/components";
 
 const Header = ({
   userName,

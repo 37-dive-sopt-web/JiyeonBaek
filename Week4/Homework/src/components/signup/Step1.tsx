@@ -1,7 +1,7 @@
 import type { FormEvent } from "react";
 import Button from "../common/Button";
 import Input from "../common/Input";
-import type { Step1Props } from "../../type/signup";
+import type { Step1Props } from "../../type/auth";
 import { authForm } from "../../pages/AuthPage.css";
 
 const Step1 = ({ id, onChangeId, onNext, isValid }: Step1Props) => {

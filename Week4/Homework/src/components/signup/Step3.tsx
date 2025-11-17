@@ -1,7 +1,7 @@
 import type { FormEvent } from "react";
 import Button from "../common/Button";
 import Input from "../common/Input";
-import type { Step3Props } from "../../type/signup";
+import type { Step3Props } from "../../type/auth";
 import { authForm } from "../../pages/AuthPage.css";
 
 const Step3 = ({
@@ -14,6 +14,7 @@ const Step3 = ({
   onSubmit,
   isValid,
   emailErrorMessage,
+  isLoading = false,
 }: Step3Props) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,8 +48,8 @@ const Step3 = ({
         value={age}
         onChange={onChangeAge}
       />
-      <Button type="submit" disabled={!isValid}>
-        회원가입
+      <Button type="submit" disabled={!isValid || isLoading}>
+        {isLoading ? "회원가입 중..." : "회원가입"}
       </Button>
     </form>
   );

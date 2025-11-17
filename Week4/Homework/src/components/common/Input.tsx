@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { InputProps } from "../../type/input";
+import type { InputProps } from "../../type/components";
 import EyeOnIcon from "../../assets/icons/eye-on.svg?react";
 import EyeOffIcon from "../../assets/icons/eye-off.svg?react";
 import {
