@@ -9,7 +9,7 @@ import {
   myInfoForm,
   myInfoTitle,
 } from "./MyInfo.css";
-import { errorMessage, successMessage } from "../../styles/message.css";
+import { successMessage } from "../../styles/message.css";
 import type { MyInfoProps } from "../../type/myInfo";
 import { LOADING_MESSAGES, SUCCESS_MESSAGES } from "../../constants/messages";
 
@@ -23,7 +23,6 @@ const MyInfo = ({
 }: MyInfoProps) => {
   const {
     form,
-    error,
     isLoading,
     isSuccess,
     handleChange,
@@ -69,7 +68,6 @@ const MyInfo = ({
           name="age"
           onChange={handleChange("age")}
         />
-        {error && <p className={errorMessage}>{error}</p>}
         {isSuccess && (
           <p className={successMessage}>{SUCCESS_MESSAGES.UPDATE}</p>
         )}

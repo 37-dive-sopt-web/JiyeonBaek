@@ -17,7 +17,6 @@ import { SUCCESS_MESSAGES, ERROR_MESSAGES } from "../constants/messages";
 export const useSignupForm = () => {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [form, setForm] = useState<SignupFormState>(INITIAL_SIGNUP_FORM);
-  const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -47,7 +46,6 @@ export const useSignupForm = () => {
         ...prev,
         [field]: value,
       }));
-      setError(null);
     };
 
   const isStep1Valid = isValidId(form.id);
@@ -75,7 +73,6 @@ export const useSignupForm = () => {
     if (!isStep3Valid) return;
 
     setIsLoading(true);
-    setError(null);
 
     try {
       const response = await signup({
@@ -90,7 +87,6 @@ export const useSignupForm = () => {
       navigate("/login");
     } catch (error: unknown) {
       const errorMessage = getErrorMessage(error, ERROR_MESSAGES.SIGNUP_FAILED);
-      setError(errorMessage);
       alert(errorMessage);
     } finally {
       setIsLoading(false);
@@ -106,7 +102,6 @@ export const useSignupForm = () => {
     idErrorMessage,
     passwordErrorMessage,
     emailErrorMessage,
-    error,
     isLoading,
     handleBack,
     handleNextStep,

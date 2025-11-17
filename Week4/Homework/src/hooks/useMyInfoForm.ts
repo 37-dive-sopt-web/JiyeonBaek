@@ -22,7 +22,6 @@ export const useMyInfoForm = ({
     email,
     age,
   });
-  const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -57,7 +56,6 @@ export const useMyInfoForm = ({
         ...prev,
         [field]: value,
       }));
-      setError(null);
       setIsSuccess(false);
     };
 
@@ -66,13 +64,12 @@ export const useMyInfoForm = ({
     if (!isUpdateButtonEnabled) return;
 
     setIsLoading(true);
-    setError(null);
     setIsSuccess(false);
 
     try {
       const userIdNum = parseNumber(id);
       if (userIdNum === null) {
-        setError(ERROR_MESSAGES.INVALID_USER_ID);
+        alert(ERROR_MESSAGES.INVALID_USER_ID);
         setIsLoading(false);
         return;
       }
@@ -92,7 +89,6 @@ export const useMyInfoForm = ({
       }
     } catch (error: unknown) {
       const errorMessage = getErrorMessage(error, ERROR_MESSAGES.UPDATE_FAILED);
-      setError(errorMessage);
       alert(errorMessage);
     } finally {
       setIsLoading(false);
@@ -113,7 +109,6 @@ export const useMyInfoForm = ({
 
   return {
     form,
-    error,
     isLoading,
     isSuccess,
     handleChange,

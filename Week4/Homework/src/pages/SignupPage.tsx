@@ -5,7 +5,6 @@ import { link, title } from "../styles/typography.css";
 import BackIcon from "../assets/icons/arrow-back.svg?react";
 import { useSignupForm } from "../hooks/useSignupForm";
 import { authContainer, authLinkContainer, backIcon } from "./AuthPage.css";
-import { errorMessage } from "../styles/message.css";
 import { Link } from "react-router-dom";
 import { useAuthRedirect } from "../hooks/useAuthRedirect";
 
@@ -20,7 +19,6 @@ export const SignupPage = () => {
     idErrorMessage,
     passwordErrorMessage,
     emailErrorMessage,
-    error,
     isLoading,
     handleBack,
     handleNextStep,
@@ -55,21 +53,18 @@ export const SignupPage = () => {
         />
       )}
       {step === 3 && (
-        <>
-          <Step3
-            name={form.name}
-            email={form.email}
-            age={form.age}
-            onChangeName={handleChange("name")}
-            onChangeEmail={handleChange("email")}
-            onChangeAge={handleChange("age")}
-            onSubmit={handleSignup}
-            isValid={isStep3Valid}
-            emailErrorMessage={emailErrorMessage}
-            isLoading={isLoading}
-          />
-          {error && <p className={errorMessage}>{error}</p>}
-        </>
+        <Step3
+          name={form.name}
+          email={form.email}
+          age={form.age}
+          onChangeName={handleChange("name")}
+          onChangeEmail={handleChange("email")}
+          onChangeAge={handleChange("age")}
+          onSubmit={handleSignup}
+          isValid={isStep3Valid}
+          emailErrorMessage={emailErrorMessage}
+          isLoading={isLoading}
+        />
       )}
       <div className={authLinkContainer}>
         <p>이미 회원이신가요?</p>
