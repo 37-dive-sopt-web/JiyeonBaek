@@ -28,10 +28,6 @@ export const useMyPage = () => {
     setActiveTab(tab);
   }, [location.pathname]);
 
-  const handleTabChange = useCallback((tab: TabType) => {
-    setActiveTab(tab);
-  }, []);
-
   const handleMyInfo = useCallback(() => {
     navigate("/mypage/myinfo");
   }, [navigate]);
@@ -111,7 +107,6 @@ export const useMyPage = () => {
     activeTab,
     userInfo,
     isLoadingUserInfo,
-    handleTabChange,
     handleMyInfo,
     handleMemberSearch,
     handleLogout,

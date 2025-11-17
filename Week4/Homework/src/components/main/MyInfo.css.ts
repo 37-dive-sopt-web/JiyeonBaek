@@ -1,19 +1,14 @@
 import { style } from "@vanilla-extract/css";
 import { themeVars } from "../../styles/theme.css";
+import {
+  pageContainer,
+  pageTitle,
+  infoLabel,
+  infoValue,
+} from "../../styles/common.css";
 
-export const myInfoContainer = style({
-  display: "flex",
-  flexDirection: "column",
-  gap: themeVars.space.lg,
-  margin: "70px auto 0 auto",
-  maxWidth: "400px",
-});
-
-export const myInfoTitle = style({
-  fontSize: themeVars.font.size.lg,
-  fontWeight: 600,
-  color: themeVars.color.text,
-});
+export const myInfoContainer = pageContainer;
+export const myInfoTitle = pageTitle;
 
 export const myIdInfo = style({
   display: "flex",
@@ -23,17 +18,8 @@ export const myIdInfo = style({
   padding: "0 0.5rem",
 });
 
-export const myIdInfoLabel = style({
-  fontSize: themeVars.font.size.sm,
-  fontWeight: "500",
-  color: themeVars.color.gray[400],
-});
-
-export const myIdInfoValue = style({
-  fontSize: themeVars.font.size.sm,
-  fontWeight: 700,
-  color: themeVars.color.text,
-});
+export const myIdInfoLabel = infoLabel;
+export const myIdInfoValue = infoValue;
 
 export const myInfoForm = style({
   display: "flex",
