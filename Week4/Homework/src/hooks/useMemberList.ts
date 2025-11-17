@@ -1,35 +1,61 @@
 import { useState } from "react";
+import { getMemberInfo } from "../apis/member";
+import { parseNumber } from "../utils/number";
+import { getErrorMessage } from "../utils/error";
+import type { MemberDisplayInfo } from "../type/member";
 
 export const useMemberList = () => {
   const [memberId, setMemberId] = useState("");
-  const [searchedMember, setSearchedMember] = useState<{
-    userName: string;
-    userId: string;
-    userEmail: string;
-    userAge: string;
-  } | null>(null);
+  const [searchedMember, setSearchedMember] =
+    useState<MemberDisplayInfo | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
+  // 회원 ID 변경
   const handleChangeMemberId = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMemberId(e.target.value);
+    setError(null);
   };
 
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+  // 회원 조회
+  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: API 호출로 회원 정보 조회
-    // 임시로 더미 데이터
-    setSearchedMember({
-      userName: "백지연",
-      userId: memberId,
-      userEmail: "test@test.com",
-      userAge: "20",
-    });
+    if (!memberId.trim()) return;
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const memberIdNum = parseNumber(memberId);
+      if (memberIdNum === null) {
+        setError("올바른 회원 ID를 입력해주세요.");
+        return;
+      }
+
+      const response = await getMemberInfo(memberIdNum);
+
+      setSearchedMember({
+        userName: response.name,
+        userId: String(response.id),
+        userEmail: response.email,
+        userAge: String(response.age),
+      });
+    } catch (error: unknown) {
+      setError(getErrorMessage(error, "회원 정보 조회에 실패했습니다."));
+      setSearchedMember(null);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
+  // 검색 버튼 활성화 여부
   const isSearchButtonEnabled = memberId.trim().length > 0;
 
   return {
     memberId,
     searchedMember,
+    error,
+    isLoading,
     handleChangeMemberId,
     handleSearch,
     isSearchButtonEnabled,

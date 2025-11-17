@@ -1,62 +1,109 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import type { MyInfoFormState, UseMyInfoFormProps } from "../type/myInfo";
+import { updateMemberInfo } from "../apis/member";
+import { parseNumber } from "../utils/number";
+import { getErrorMessage } from "../utils/error";
 
-export const useMyInfoForm = ({
-  userName,
-  userEmail,
-  userAge,
-}: UseMyInfoFormProps) => {
+export const useMyInfoForm = ({ id, name, email, age }: UseMyInfoFormProps) => {
   const [form, setForm] = useState<MyInfoFormState>({
-    name: userName,
-    email: userEmail,
-    age: userAge,
+    name,
+    email,
+    age,
   });
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const initialForm: MyInfoFormState = {
-    name: userName,
-    email: userEmail,
-    age: userAge,
-  };
+  const initialForm = useMemo<MyInfoFormState>(
+    () => ({
+      name,
+      email,
+      age,
+    }),
+    [name, email, age]
+  );
 
   useEffect(() => {
     setForm({
-      name: userName,
-      email: userEmail,
-      age: userAge,
+      name,
+      email,
+      age,
     });
-  }, [userName, userEmail, userAge]);
+    setIsSuccess(false);
+  }, [name, email, age]);
 
+  // 정보 변경
   const handleChange =
     (field: keyof MyInfoFormState) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
+      let value = e.target.value;
+
+      if (field === "age") {
+        value = value.replace(/\D/g, "");
+      }
+
       setForm((prev) => ({
         ...prev,
-        [field]: e.target.value,
+        [field]: value,
       }));
+      setError(null);
+      setIsSuccess(false);
     };
 
-  const handleUpdate = (e: React.FormEvent<HTMLFormElement>) => {
+  // 정보 수정
+  const handleUpdate = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("수정", form);
-    // TODO: API 호출
+    if (!isUpdateButtonEnabled) return;
+
+    setIsLoading(true);
+    setError(null);
+    setIsSuccess(false);
+
+    try {
+      const userIdNum = parseNumber(id);
+      if (userIdNum === null) {
+        setError("올바른 사용자 ID가 아닙니다.");
+        setIsLoading(false);
+        return;
+      }
+
+      await updateMemberInfo(userIdNum, {
+        name: form.name,
+        email: form.email,
+        age: form.age ? Number(form.age) : undefined,
+      });
+
+      setIsSuccess(true);
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    } catch (error: unknown) {
+      setError(getErrorMessage(error, "정보 수정에 실패했습니다."));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  // 빈 필드 체크
+  // 빈 필드 여부
   const hasEmptyField =
     form.name.trim().length === 0 ||
     form.email.trim().length === 0 ||
     form.age.trim().length === 0;
 
-  // 초기값과 비교
+  // 변경 여부
   const hasChanged =
     form.name !== initialForm.name ||
     form.email !== initialForm.email ||
     form.age !== initialForm.age;
 
+  // 수정 버튼 활성화 여부
   const isUpdateButtonEnabled = !hasEmptyField && hasChanged;
 
   return {
     form,
+    error,
+    isLoading,
+    isSuccess,
     handleChange,
     handleUpdate,
     isUpdateButtonEnabled,
