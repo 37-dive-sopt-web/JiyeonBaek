@@ -12,6 +12,7 @@ const Step2 = ({
   onChangePasswordConfirm,
   onNext,
   isValid,
+  passwordErrorMessage,
 }: Step2Props) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ const Step2 = ({
         name="password"
         value={password}
         onChange={onChangePassword}
+        errorMessage={passwordErrorMessage}
       />
       <Input
         type="password"

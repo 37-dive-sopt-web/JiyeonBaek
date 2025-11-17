@@ -4,7 +4,13 @@ import Input from "../common/Input";
 import type { Step1Props } from "../../type/auth";
 import { authForm } from "../../pages/AuthPage.css";
 
-const Step1 = ({ id, onChangeId, onNext, isValid }: Step1Props) => {
+const Step1 = ({
+  id,
+  onChangeId,
+  onNext,
+  isValid,
+  errorMessage,
+}: Step1Props) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onNext?.();
@@ -19,6 +25,7 @@ const Step1 = ({ id, onChangeId, onNext, isValid }: Step1Props) => {
         name="id"
         value={id}
         onChange={onChangeId}
+        errorMessage={errorMessage}
       />
       <Button type="submit" disabled={!isValid}>
         다음

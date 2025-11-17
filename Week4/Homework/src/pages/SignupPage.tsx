@@ -17,6 +17,8 @@ export const SignupPage = () => {
     isStep1Valid,
     isStep2Valid,
     isStep3Valid,
+    idErrorMessage,
+    passwordErrorMessage,
     emailErrorMessage,
     error,
     isLoading,
@@ -38,6 +40,7 @@ export const SignupPage = () => {
           onChangeId={handleChange("id")}
           onNext={handleNextStep}
           isValid={isStep1Valid}
+          errorMessage={idErrorMessage}
         />
       )}
       {step === 2 && (
@@ -48,6 +51,7 @@ export const SignupPage = () => {
           onChangePasswordConfirm={handleChange("passwordConfirm")}
           onNext={handleNextStep}
           isValid={isStep2Valid}
+          passwordErrorMessage={passwordErrorMessage}
         />
       )}
       {step === 3 && (

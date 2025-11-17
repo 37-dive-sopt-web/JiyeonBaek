@@ -48,6 +48,7 @@ export interface Step1Props {
   onChangeId: (e: ChangeEvent<HTMLInputElement>) => void;
   onNext?: () => void;
   isValid: boolean;
+  errorMessage?: string;
 }
 
 export interface Step2Props {
@@ -57,6 +58,7 @@ export interface Step2Props {
   onChangePasswordConfirm: (e: ChangeEvent<HTMLInputElement>) => void;
   onNext?: () => void;
   isValid: boolean;
+  passwordErrorMessage?: string;
 }
 
 export interface Step3Props {
