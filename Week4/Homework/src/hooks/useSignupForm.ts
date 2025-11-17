@@ -12,6 +12,7 @@ import {
 import { signup } from "../apis/auth";
 import { getErrorMessage } from "../utils/error";
 import { sanitizeAgeInput } from "../utils/form";
+import { SUCCESS_MESSAGES, ERROR_MESSAGES } from "../constants/messages";
 
 export const useSignupForm = () => {
   const [step, setStep] = useState<1 | 2 | 3>(1);
@@ -67,7 +68,7 @@ export const useSignupForm = () => {
 
   const emailErrorMessage =
     form.email.length > 0 && !isValidEmail(form.email)
-      ? "올바른 이메일 형식이 아닙니다."
+      ? ERROR_MESSAGES.INVALID_EMAIL
       : undefined;
 
   const handleSignup = async () => {
@@ -85,10 +86,10 @@ export const useSignupForm = () => {
         age: Number(form.age),
       });
 
-      alert(`${response.data.name}님, 회원가입에 성공했습니다.`);
+      alert(SUCCESS_MESSAGES.SIGNUP(response.data.name));
       navigate("/login");
     } catch (error: unknown) {
-      const errorMessage = getErrorMessage(error, "회원가입에 실패했습니다.");
+      const errorMessage = getErrorMessage(error, ERROR_MESSAGES.SIGNUP_FAILED);
       setError(errorMessage);
       alert(errorMessage);
     } finally {

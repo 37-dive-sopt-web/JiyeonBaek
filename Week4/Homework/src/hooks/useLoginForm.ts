@@ -4,6 +4,7 @@ import { isValidId } from "../utils/validation";
 import { login } from "../apis/auth";
 import { setUserId } from "../utils/storage";
 import { getErrorMessage } from "../utils/error";
+import { ERROR_MESSAGES } from "../constants/messages";
 
 export const useLoginForm = () => {
   const [id, setId] = useState("");
@@ -41,7 +42,7 @@ export const useLoginForm = () => {
 
       navigate("/mypage");
     } catch (error: unknown) {
-      setError(getErrorMessage(error, "로그인에 실패했습니다."));
+      setError(getErrorMessage(error, ERROR_MESSAGES.LOGIN_FAILED));
     } finally {
       setIsLoading(false);
     }

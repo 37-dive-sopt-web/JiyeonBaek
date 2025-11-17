@@ -11,6 +11,7 @@ import {
 } from "./MyInfo.css";
 import { errorMessage, successMessage } from "../../styles/message.css";
 import type { MyInfoProps } from "../../type/myInfo";
+import { LOADING_MESSAGES, SUCCESS_MESSAGES } from "../../constants/messages";
 
 const MyInfo = ({
   id,
@@ -70,10 +71,10 @@ const MyInfo = ({
         />
         {error && <p className={errorMessage}>{error}</p>}
         {isSuccess && (
-          <p className={successMessage}>정보가 성공적으로 수정되었습니다.</p>
+          <p className={successMessage}>{SUCCESS_MESSAGES.UPDATE}</p>
         )}
         <Button type="submit" disabled={!isUpdateButtonEnabled || isLoading}>
-          {isLoading ? "저장 중..." : "저장"}
+          {isLoading ? LOADING_MESSAGES.SAVE : "저장"}
         </Button>
       </form>
     </div>

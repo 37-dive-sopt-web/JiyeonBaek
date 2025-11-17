@@ -3,6 +3,7 @@ import MemberList from "../components/main/MemberList";
 import MyInfo from "../components/main/MyInfo";
 import { useMemberList } from "../hooks/useMemberList";
 import { useMyPage } from "../hooks/useMyPage";
+import { LOADING_MESSAGES } from "../constants/messages";
 
 export const MyPage = () => {
   const {
@@ -28,7 +29,7 @@ export const MyPage = () => {
   } = useMemberList();
 
   if (isLoadingUserInfo) {
-    return <div>로딩 중...</div>;
+    return <div>{LOADING_MESSAGES.LOADING}</div>;
   }
 
   if (!userInfo) {

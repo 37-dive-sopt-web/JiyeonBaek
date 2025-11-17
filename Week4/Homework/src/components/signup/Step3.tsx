@@ -3,6 +3,7 @@ import Input from "../common/Input";
 import type { Step3Props } from "../../type/auth";
 import { authForm } from "../../pages/AuthPage.css";
 import { createStepSubmitHandler } from "../../utils/step";
+import { LOADING_MESSAGES } from "../../constants/messages";
 
 const Step3 = ({
   name,
@@ -46,7 +47,7 @@ const Step3 = ({
         onChange={onChangeAge}
       />
       <Button type="submit" disabled={!isValid || isLoading}>
-        {isLoading ? "회원가입 중..." : "회원가입"}
+        {isLoading ? LOADING_MESSAGES.SIGNUP : "회원가입"}
       </Button>
     </form>
   );

@@ -3,6 +3,7 @@ import { getMemberInfo } from "../apis/member";
 import { parseNumber } from "../utils/number";
 import { getErrorMessage } from "../utils/error";
 import type { MemberDisplayInfo } from "../type/member";
+import { ERROR_MESSAGES } from "../constants/messages";
 
 export const useMemberList = () => {
   const [memberId, setMemberId] = useState("");
@@ -26,7 +27,8 @@ export const useMemberList = () => {
     try {
       const memberIdNum = parseNumber(memberId);
       if (memberIdNum === null) {
-        setError("올바른 회원 ID를 입력해주세요.");
+        setError(ERROR_MESSAGES.INVALID_MEMBER_ID);
+        setIsLoading(false);
         return;
       }
 
@@ -39,7 +41,7 @@ export const useMemberList = () => {
         userAge: String(response.age),
       });
     } catch (error: unknown) {
-      setError(getErrorMessage(error, "회원 정보 조회에 실패했습니다."));
+      setError(getErrorMessage(error, ERROR_MESSAGES.SEARCH_FAILED));
       setSearchedMember(null);
     } finally {
       setIsLoading(false);

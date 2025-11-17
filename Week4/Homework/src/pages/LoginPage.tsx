@@ -6,6 +6,7 @@ import { authButtonContainer, authForm, authContainer } from "./AuthPage.css";
 import { errorMessage } from "../styles/message.css";
 import { useLoginForm } from "../hooks/useLoginForm";
 import { useAuthRedirect } from "../hooks/useAuthRedirect";
+import { LOADING_MESSAGES } from "../constants/messages";
 
 export const LoginPage = () => {
   useAuthRedirect();
@@ -43,7 +44,7 @@ export const LoginPage = () => {
         {error && <p className={errorMessage}>{error}</p>}
         <div className={authButtonContainer}>
           <Button type="submit" disabled={!isLoginValid || isLoading}>
-            {isLoading ? "로그인 중..." : "로그인"}
+            {isLoading ? LOADING_MESSAGES.LOGIN : "로그인"}
           </Button>
           <Link className={link} to="/signup">
             회원가입

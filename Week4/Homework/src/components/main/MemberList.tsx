@@ -11,6 +11,7 @@ import {
   memberListTitle,
 } from "./MemberList.css";
 import { errorMessage } from "../../styles/message.css";
+import { LOADING_MESSAGES } from "../../constants/messages";
 
 const MemberList = ({
   memberId,
@@ -34,7 +35,7 @@ const MemberList = ({
           onChange={handleChangeMemberId}
         />
         <Button type="submit" disabled={!isSearchButtonEnabled || isLoading}>
-          {isLoading ? "조회 중..." : "조회"}
+          {isLoading ? LOADING_MESSAGES.SEARCH : "조회"}
         </Button>
       </form>
       {error && <p className={errorMessage}>{error}</p>}

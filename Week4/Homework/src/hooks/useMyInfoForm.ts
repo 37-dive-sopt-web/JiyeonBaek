@@ -4,6 +4,11 @@ import { updateMemberInfo } from "../apis/member";
 import { parseNumber } from "../utils/number";
 import { getErrorMessage } from "../utils/error";
 import { sanitizeAgeInput } from "../utils/form";
+import {
+  SUCCESS_MESSAGES,
+  ERROR_MESSAGES,
+  DELAY_MS,
+} from "../constants/messages";
 
 export const useMyInfoForm = ({
   id,
@@ -67,7 +72,8 @@ export const useMyInfoForm = ({
     try {
       const userIdNum = parseNumber(id);
       if (userIdNum === null) {
-        setError("올바른 사용자 ID가 아닙니다.");
+        setError(ERROR_MESSAGES.INVALID_USER_ID);
+        setIsLoading(false);
         return;
       }
 
@@ -78,14 +84,14 @@ export const useMyInfoForm = ({
       });
 
       setIsSuccess(true);
-      alert("정보가 성공적으로 수정되었습니다.");
+      alert(SUCCESS_MESSAGES.UPDATE);
       if (onUpdateSuccess) {
         setTimeout(() => {
           onUpdateSuccess();
-        }, 1000);
+        }, DELAY_MS.UPDATE_SUCCESS);
       }
     } catch (error: unknown) {
-      const errorMessage = getErrorMessage(error, "정보 수정에 실패했습니다.");
+      const errorMessage = getErrorMessage(error, ERROR_MESSAGES.UPDATE_FAILED);
       setError(errorMessage);
       alert(errorMessage);
     } finally {

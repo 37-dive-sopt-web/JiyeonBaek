@@ -6,6 +6,11 @@ import { getErrorMessage } from "../utils/error";
 import { useRequireAuth } from "../utils/navigation";
 import type { TabType } from "../type/components";
 import type { MemberInfo } from "../type/member";
+import {
+  SUCCESS_MESSAGES,
+  ERROR_MESSAGES,
+  CONFIRM_MESSAGES,
+} from "../constants/messages";
 
 export const useMyPage = () => {
   const location = useLocation();
@@ -66,17 +71,17 @@ export const useMyPage = () => {
     const userIdNum = requireAuth();
     if (userIdNum === null) return;
 
-    if (!window.confirm("정말 회원탈퇴를 하시겠습니까?")) {
+    if (!window.confirm(CONFIRM_MESSAGES.WITHDRAWAL)) {
       return;
     }
 
     try {
       await deleteMember(userIdNum);
       removeUserId();
-      alert("회원탈퇴가 완료되었습니다.");
+      alert(SUCCESS_MESSAGES.WITHDRAWAL);
       navigate("/login");
     } catch (error: unknown) {
-      alert(getErrorMessage(error, "회원탈퇴에 실패했습니다."));
+      alert(getErrorMessage(error, ERROR_MESSAGES.WITHDRAWAL_FAILED));
     }
   }, [requireAuth, navigate]);
 
