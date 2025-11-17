@@ -68,14 +68,16 @@ const MyInfo = ({
           name="age"
           onChange={handleChange("age")}
         />
-        {isSuccess && (
-          <p className={successMessage} role="status" aria-live="polite">
-            {SUCCESS_MESSAGES.UPDATE}
-          </p>
-        )}
-        <Button type="submit" disabled={!isUpdateButtonEnabled || isLoading}>
-          {isLoading ? LOADING_MESSAGES.SAVE : "저장"}
-        </Button>
+        <div>
+          <Button type="submit" disabled={!isUpdateButtonEnabled || isLoading}>
+            {isLoading ? LOADING_MESSAGES.SAVE : "저장"}
+          </Button>
+          {isSuccess && (
+            <p className={successMessage} role="status" aria-live="polite">
+              {SUCCESS_MESSAGES.UPDATE}
+            </p>
+          )}
+        </div>
       </form>
     </section>
   );

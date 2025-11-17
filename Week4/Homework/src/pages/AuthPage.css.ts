@@ -22,7 +22,6 @@ export const authButtonContainer = style({
   display: "flex",
   flexDirection: "column",
   gap: themeVars.space.xs,
-  alignItems: "center",
 });
 
 export const authLinkContainer = style({

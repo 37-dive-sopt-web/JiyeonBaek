@@ -34,15 +34,18 @@ const MemberList = ({
           value={memberId}
           onChange={handleChangeMemberId}
         />
-        <Button type="submit" disabled={!isSearchButtonEnabled || isLoading}>
-          {isLoading ? LOADING_MESSAGES.SEARCH : "조회"}
-        </Button>
+        <div>
+          <Button type="submit" disabled={!isSearchButtonEnabled || isLoading}>
+            {isLoading ? LOADING_MESSAGES.SEARCH : "조회"}
+          </Button>
+          {error && (
+            <p className={errorMessage} role="alert" aria-live="assertive">
+              {error}
+            </p>
+          )}
+        </div>
       </form>
-      {error && (
-        <p className={errorMessage} role="alert" aria-live="assertive">
-          {error}
-        </p>
-      )}
+
       {searchedMember && (
         <dl className={memberListInfoContainer}>
           <div className={memberListInfoItem}>

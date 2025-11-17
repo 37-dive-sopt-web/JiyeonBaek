@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import { link, title } from "../styles/typography.css";
-import { authButtonContainer, authForm, authContainer } from "./AuthPage.css";
+import { authButtonContainer, authForm, authContainer, authLinkContainer } from "./AuthPage.css";
 import { errorMessage } from "../styles/message.css";
 import { useLoginForm } from "../hooks/useLoginForm";
 import { useAuthRedirect } from "../hooks/useAuthRedirect";
@@ -41,18 +41,22 @@ export const LoginPage = () => {
           value={password}
           onChange={handleChangePassword}
         />
-        {error && (
-          <p className={errorMessage} role="alert" aria-live="assertive">
-            {error}
-          </p>
-        )}
+
         <div className={authButtonContainer}>
+          {error && (
+            <p className={errorMessage} role="alert" aria-live="assertive">
+              {error}
+            </p>
+          )}
           <Button type="submit" disabled={!isLoginValid || isLoading}>
             {isLoading ? LOADING_MESSAGES.LOGIN : "로그인"}
           </Button>
-          <Link className={link} to="/signup">
-            회원가입
-          </Link>
+          <div className={authLinkContainer}>
+            <p>이미 회원이신가요?</p>
+            <Link className={link} to="/signup">
+              회원가입
+            </Link>
+          </div>
         </div>
       </form>
     </main>
