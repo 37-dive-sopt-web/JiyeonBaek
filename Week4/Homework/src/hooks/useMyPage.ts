@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { getMemberInfo, deleteMember } from "../apis/member";
 import { removeUserId } from "../utils/storage";
 import { getErrorMessage } from "../utils/error";
@@ -8,23 +8,37 @@ import type { TabType } from "../type/components";
 import type { MemberInfo } from "../type/member";
 
 export const useMyPage = () => {
-  const [activeTab, setActiveTab] = useState<TabType>("myInfo");
-  const [userInfo, setUserInfo] = useState<MemberInfo | null>(null);
-  const [isLoadingUserInfo, setIsLoadingUserInfo] = useState(true);
+  const location = useLocation();
   const navigate = useNavigate();
   const { requireAuth } = useRequireAuth();
+
+  const getActiveTabFromPath = (path: string): TabType => {
+    if (path.includes("/members")) return "memberList";
+    return "myInfo";
+  };
+
+  const [activeTab, setActiveTab] = useState<TabType>(() =>
+    getActiveTabFromPath(location.pathname)
+  );
+  const [userInfo, setUserInfo] = useState<MemberInfo | null>(null);
+  const [isLoadingUserInfo, setIsLoadingUserInfo] = useState(true);
+
+  useEffect(() => {
+    const tab = getActiveTabFromPath(location.pathname);
+    setActiveTab(tab);
+  }, [location.pathname]);
 
   const handleTabChange = useCallback((tab: TabType) => {
     setActiveTab(tab);
   }, []);
 
   const handleMyInfo = useCallback(() => {
-    setActiveTab("myInfo");
-  }, []);
+    navigate("/mypage/myinfo");
+  }, [navigate]);
 
   const handleMemberSearch = useCallback(() => {
-    setActiveTab("memberList");
-  }, []);
+    navigate("/mypage/members");
+  }, [navigate]);
 
   const handleLogout = useCallback(() => {
     removeUserId();
@@ -63,6 +77,7 @@ export const useMyPage = () => {
     try {
       await deleteMember(userIdNum);
       removeUserId();
+      alert("회원탈퇴가 완료되었습니다.");
       navigate("/login");
     } catch (error: unknown) {
       alert(getErrorMessage(error, "회원탈퇴에 실패했습니다."));

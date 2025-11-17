@@ -80,13 +80,16 @@ export const useMyInfoForm = ({
       });
 
       setIsSuccess(true);
+      alert("정보가 성공적으로 수정되었습니다.");
       if (onUpdateSuccess) {
         setTimeout(() => {
           onUpdateSuccess();
         }, 1000);
       }
     } catch (error: unknown) {
-      setError(getErrorMessage(error, "정보 수정에 실패했습니다."));
+      const errorMessage = getErrorMessage(error, "정보 수정에 실패했습니다.");
+      setError(errorMessage);
+      alert(errorMessage);
     } finally {
       setIsLoading(false);
     }

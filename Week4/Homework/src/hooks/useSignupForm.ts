@@ -2,7 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { INITIAL_SIGNUP_FORM } from "../constants/signup";
 import type { SignupFormState } from "../type/auth";
-import { isValidId, isValidEmail } from "../utils/validation";
+import {
+  isValidId,
+  isValidEmail,
+  getIdErrorMessage,
+  isValidPassword,
+  getPasswordErrorMessage,
+} from "../utils/validation";
 import { signup } from "../apis/auth";
 import { getErrorMessage } from "../utils/error";
 
@@ -47,11 +53,14 @@ export const useSignupForm = () => {
 
   // 유효성 검사
   const isStep1Valid = isValidId(form.id);
+  const idErrorMessage = getIdErrorMessage(form.id);
 
   const isStep2Valid =
-    form.password.length > 0 &&
+    isValidPassword(form.password) &&
     form.passwordConfirm.length > 0 &&
     form.password === form.passwordConfirm;
+
+  const passwordErrorMessage = getPasswordErrorMessage(form.password);
 
   const isStep3Valid =
     form.name.trim().length > 0 &&
@@ -73,7 +82,7 @@ export const useSignupForm = () => {
     setError(null);
 
     try {
-      await signup({
+      const response = await signup({
         username: form.id,
         password: form.password,
         name: form.name,
@@ -81,7 +90,7 @@ export const useSignupForm = () => {
         age: Number(form.age),
       });
 
-      alert("회원가입에 성공했습니다.");
+      alert(`${response.data.name}님, 회원가입에 성공했습니다.`);
       navigate("/login");
     } catch (error: unknown) {
       const errorMessage = getErrorMessage(error, "회원가입에 실패했습니다.");
@@ -98,6 +107,8 @@ export const useSignupForm = () => {
     isStep1Valid,
     isStep2Valid,
     isStep3Valid,
+    idErrorMessage,
+    passwordErrorMessage,
     emailErrorMessage,
     error,
     isLoading,
