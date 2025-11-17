@@ -33,7 +33,7 @@ export const [themeClass, themeVars] = createTheme({
     xs: "0.6rem",
     sm: "1rem",
     md: "1.4rem",
-    lg: "2rem",
+    lg: "2.2rem",
   },
 
   transition: {
