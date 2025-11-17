@@ -4,8 +4,8 @@ import Input from "../common/Input";
 import {
   memberListContainer,
   memberListForm,
-  memberListInfo,
   memberListInfoContainer,
+  memberListInfoItem,
   memberListInfoLabel,
   memberListInfoValue,
   memberListTitle,
@@ -23,7 +23,7 @@ const MemberList = ({
   handleSearch,
 }: MemberListProps) => {
   return (
-    <div className={memberListContainer}>
+    <section className={memberListContainer}>
       <h2 className={memberListTitle}>회원 조회</h2>
       <form onSubmit={handleSearch} className={memberListForm}>
         <Input
@@ -38,28 +38,32 @@ const MemberList = ({
           {isLoading ? LOADING_MESSAGES.SEARCH : "조회"}
         </Button>
       </form>
-      {error && <p className={errorMessage}>{error}</p>}
-      {searchedMember && (
-        <div className={memberListInfoContainer}>
-          <div className={memberListInfo}>
-            <p className={memberListInfoLabel}>이름</p>
-            <p className={memberListInfoValue}>{searchedMember.userName}</p>
-          </div>
-          <div className={memberListInfo}>
-            <p className={memberListInfoLabel}>아이디</p>
-            <p className={memberListInfoValue}>{searchedMember.userId}</p>
-          </div>
-          <div className={memberListInfo}>
-            <p className={memberListInfoLabel}>이메일</p>
-            <p className={memberListInfoValue}>{searchedMember.userEmail}</p>
-          </div>
-          <div className={memberListInfo}>
-            <p className={memberListInfoLabel}>나이</p>
-            <p className={memberListInfoValue}>{searchedMember.userAge}</p>
-          </div>
-        </div>
+      {error && (
+        <p className={errorMessage} role="alert" aria-live="assertive">
+          {error}
+        </p>
       )}
-    </div>
+      {searchedMember && (
+        <dl className={memberListInfoContainer}>
+          <div className={memberListInfoItem}>
+            <dt className={memberListInfoLabel}>이름</dt>
+            <dd className={memberListInfoValue}>{searchedMember.userName}</dd>
+          </div>
+          <div className={memberListInfoItem}>
+            <dt className={memberListInfoLabel}>아이디</dt>
+            <dd className={memberListInfoValue}>{searchedMember.userId}</dd>
+          </div>
+          <div className={memberListInfoItem}>
+            <dt className={memberListInfoLabel}>이메일</dt>
+            <dd className={memberListInfoValue}>{searchedMember.userEmail}</dd>
+          </div>
+          <div className={memberListInfoItem}>
+            <dt className={memberListInfoLabel}>나이</dt>
+            <dd className={memberListInfoValue}>{searchedMember.userAge}</dd>
+          </div>
+        </dl>
+      )}
+    </section>
   );
 };
 

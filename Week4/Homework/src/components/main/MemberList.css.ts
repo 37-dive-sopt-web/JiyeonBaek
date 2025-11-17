@@ -5,7 +5,6 @@ import {
   pageTitle,
   infoLabel,
   infoValue,
-  infoRow,
 } from "../../styles/common.css";
 
 export const memberListContainer = pageContainer;
@@ -23,6 +22,11 @@ export const memberListInfoContainer = style({
   gap: themeVars.space.sm,
 });
 
-export const memberListInfo = infoRow;
+export const memberListInfoItem = style({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+});
+
 export const memberListInfoLabel = infoLabel;
 export const memberListInfoValue = infoValue;

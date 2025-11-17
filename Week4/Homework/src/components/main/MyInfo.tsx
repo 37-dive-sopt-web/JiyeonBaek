@@ -37,13 +37,13 @@ const MyInfo = ({
   });
 
   return (
-    <div className={myInfoContainer}>
+    <section className={myInfoContainer}>
       <h2 className={myInfoTitle}>내 정보</h2>
       <form onSubmit={handleUpdate} className={myInfoForm}>
-        <div className={myIdInfo}>
-          <p className={myIdInfoLabel}>아이디</p>
-          <p className={myIdInfoValue}>{username}</p>
-        </div>
+        <dl className={myIdInfo}>
+          <dt className={myIdInfoLabel}>아이디</dt>
+          <dd className={myIdInfoValue}>{username}</dd>
+        </dl>
         <Input
           type="text"
           value={form.name}
@@ -69,13 +69,15 @@ const MyInfo = ({
           onChange={handleChange("age")}
         />
         {isSuccess && (
-          <p className={successMessage}>{SUCCESS_MESSAGES.UPDATE}</p>
+          <p className={successMessage} role="status" aria-live="polite">
+            {SUCCESS_MESSAGES.UPDATE}
+          </p>
         )}
         <Button type="submit" disabled={!isUpdateButtonEnabled || isLoading}>
           {isLoading ? LOADING_MESSAGES.SAVE : "저장"}
         </Button>
       </form>
-    </div>
+    </section>
   );
 };
 

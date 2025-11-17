@@ -29,7 +29,13 @@ export const MyPage = () => {
   } = useMemberList();
 
   if (isLoadingUserInfo) {
-    return <div>{LOADING_MESSAGES.LOADING}</div>;
+    return (
+      <main>
+        <div role="status" aria-live="polite" aria-busy="true">
+          {LOADING_MESSAGES.LOADING}
+        </div>
+      </main>
+    );
   }
 
   if (!userInfo) {

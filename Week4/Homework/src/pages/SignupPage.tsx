@@ -28,7 +28,7 @@ export const SignupPage = () => {
 
   return (
     <main className={authContainer}>
-      <button type="button" onClick={handleBack}>
+      <button type="button" onClick={handleBack} aria-label="뒤로 가기">
         <BackIcon className={backIcon} />
       </button>
       <h1 className={title}>회원가입</h1>

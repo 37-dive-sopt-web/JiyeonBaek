@@ -41,7 +41,11 @@ export const LoginPage = () => {
           value={password}
           onChange={handleChangePassword}
         />
-        {error && <p className={errorMessage}>{error}</p>}
+        {error && (
+          <p className={errorMessage} role="alert" aria-live="assertive">
+            {error}
+          </p>
+        )}
         <div className={authButtonContainer}>
           <Button type="submit" disabled={!isLoginValid || isLoading}>
             {isLoading ? LOADING_MESSAGES.LOGIN : "로그인"}

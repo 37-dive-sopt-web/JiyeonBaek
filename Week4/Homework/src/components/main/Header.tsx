@@ -41,7 +41,7 @@ const Header = ({
       </div>
       <div className={headerRightSection}>
         <nav>
-          <ul className={headerNav} data-open={isMenuOpen}>
+          <ul id="header-nav" className={headerNav} data-open={isMenuOpen}>
             <li>
               <button
                 className={`${navBtn} ${
@@ -93,6 +93,8 @@ const Header = ({
           className={menuToggle}
           onClick={handleToggleMenu}
           aria-label="메뉴"
+          aria-expanded={isMenuOpen}
+          aria-controls="header-nav"
         >
           <MenuIcon />
         </button>
