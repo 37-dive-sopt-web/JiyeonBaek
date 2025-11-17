@@ -1,19 +1,30 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/common/Button";
 import Input from "../components/common/Input";
 import { link, title } from "../styles/typography.css";
 import { authButtonContainer, authForm, authContainer } from "./AuthPage.css";
 import { useLoginForm } from "../hooks/useLoginForm";
+import { isLoggedIn } from "../utils/storage";
 
 export const LoginPage = () => {
-  const { id, password, isLoginValid, handleChangeId, handleChangePassword } =
-    useLoginForm();
+  const navigate = useNavigate();
+  const {
+    id,
+    password,
+    isLoginValid,
+    error,
+    isLoading,
+    handleChangeId,
+    handleChangePassword,
+    handleLogin,
+  } = useLoginForm();
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("로그인", { id, password });
-    // TODO: 로그인 API 호출
-  };
+  useEffect(() => {
+    if (isLoggedIn()) {
+      navigate("/mypage", { replace: true });
+    }
+  }, [navigate]);
 
   return (
     <main className={authContainer}>
@@ -35,9 +46,10 @@ export const LoginPage = () => {
           value={password}
           onChange={handleChangePassword}
         />
+        {error && <p style={{ color: "red", fontSize: "1.2rem" }}>{error}</p>}
         <div className={authButtonContainer}>
-          <Button type="submit" disabled={!isLoginValid}>
-            로그인
+          <Button type="submit" disabled={!isLoginValid || isLoading}>
+            {isLoading ? "로그인 중..." : "로그인"}
           </Button>
           <Link className={link} to="/signup">
             회원가입
