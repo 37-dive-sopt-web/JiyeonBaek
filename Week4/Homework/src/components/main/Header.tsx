@@ -4,25 +4,18 @@ import {
   headerSubtitle,
   headerTitle,
   navBtn,
-} from "./Heaser.css";
+  navBtnActive,
+} from "./Header.css";
+import type { HeaderProps } from "../../type/header";
 
-const Header = ({ userName }: { userName: string }) => {
-  const handleMyInfo = () => {
-    console.log("내 정보");
-  };
-
-  const handleMemberSearch = () => {
-    console.log("회원 조회");
-  };
-
-  const handleLogout = () => {
-    console.log("로그아웃");
-  };
-
-  const handleWithdrawal = () => {
-    console.log("회원탈퇴");
-  };
-
+const Header = ({
+  userName,
+  activeTab,
+  handleMyInfo,
+  handleMemberSearch,
+  handleLogout,
+  handleWithdrawal,
+}: HeaderProps) => {
   return (
     <header className={headerContainer}>
       <div>
@@ -33,7 +26,9 @@ const Header = ({ userName }: { userName: string }) => {
         <ul className={headerNav}>
           <li>
             <button
-              className={navBtn}
+              className={`${navBtn} ${
+                activeTab === "myInfo" ? navBtnActive : ""
+              }`}
               type="button"
               onClick={handleMyInfo}
               aria-label="내 정보"
@@ -43,7 +38,9 @@ const Header = ({ userName }: { userName: string }) => {
           </li>
           <li>
             <button
-              className={navBtn}
+              className={`${navBtn} ${
+                activeTab === "memberList" ? navBtnActive : ""
+              }`}
               type="button"
               onClick={handleMemberSearch}
               aria-label="회원 조회"

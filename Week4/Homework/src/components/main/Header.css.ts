@@ -26,7 +26,7 @@ export const headerNav = style({
 
 export const navBtn = style({
   fontSize: themeVars.font.size.sm,
-  color: themeVars.color.secondary,
+  color: themeVars.color.tertiary,
   fontWeight: 500,
 
   selectors: {
@@ -35,10 +35,10 @@ export const navBtn = style({
       fontWeight: 600,
       transition: themeVars.transition.sm,
     },
-    "&:active": {
-      color: themeVars.color.primary,
-      fontWeight: 600,
-      transition: themeVars.transition.sm,
-    },
   },
+});
+
+export const navBtnActive = style({
+  color: themeVars.color.gray[100],
+  fontWeight: 600,
 });
