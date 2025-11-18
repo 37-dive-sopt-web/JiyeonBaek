@@ -1,7 +1,7 @@
-import Button from "../common/Button";
-import Input from "../common/Input";
+import Button from "../common/Button/Button";
+import Input from "../common/Input/Input";
 import type { Step3Props } from "../../type/auth";
-import { authForm } from "../../pages/AuthPage.css";
+import { authForm } from "../../pages/Auth/AuthPage.css";
 import { createStepSubmitHandler } from "../../utils/step";
 import { LOADING_MESSAGES } from "../../constants/messages";
 

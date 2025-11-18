@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { LoginPage } from "../pages/LoginPage";
-import { SignupPage } from "../pages/SignupPage";
+import { LoginPage } from "../pages/Auth/LoginPage";
+import { SignupPage } from "../pages/Auth/SignupPage";
 import { MyPage } from "../pages/MyPage";
 
 export function AppRoutes() {

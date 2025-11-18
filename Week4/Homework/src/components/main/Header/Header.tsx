@@ -9,8 +9,8 @@ import {
   menuToggle,
   headerRightSection,
 } from "./Header.css";
-import MenuIcon from "../../assets/icons/menu.svg?react";
-import type { HeaderProps } from "../../type/components";
+import MenuIcon from "../../../assets/icons/menu.svg?react";
+import type { HeaderProps } from "../../../type/components";
 
 const Header = ({
   userName,

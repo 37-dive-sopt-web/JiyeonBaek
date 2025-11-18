@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
-import Button from "../components/common/Button";
-import Input from "../components/common/Input";
-import { link, title } from "../styles/typography.css";
-import { authButtonContainer, authForm, authContainer, authLinkContainer } from "./AuthPage.css";
-import { errorMessage } from "../styles/message.css";
-import { useLoginForm } from "../hooks/useLoginForm";
-import { useAuthRedirect } from "../hooks/useAuthRedirect";
-import { LOADING_MESSAGES } from "../constants/messages";
+import Button from "../../components/common/Button/Button";
+import Input from "../../components/common/Input/Input";
+import { link, title } from "../../styles/typography.css";
+import {
+  authButtonContainer,
+  authForm,
+  authContainer,
+  authLinkContainer,
+} from "./AuthPage.css";
+import { errorMessage } from "../../styles/message.css";
+import { useLoginForm } from "../../hooks/useLoginForm";
+import { useAuthRedirect } from "../../hooks/useAuthRedirect";
+import { LOADING_MESSAGES } from "../../constants/messages";
 
 export const LoginPage = () => {
   useAuthRedirect();

@@ -1,11 +1,11 @@
 import { style } from "@vanilla-extract/css";
-import { themeVars } from "../../styles/theme.css";
+import { themeVars } from "../../../styles/theme.css";
 import {
   pageContainer,
   pageTitle,
   infoLabel,
   infoValue,
-} from "../../styles/common.css";
+} from "../../../styles/common.css";
 
 export const myInfoContainer = pageContainer;
 export const myInfoTitle = pageTitle;

@@ -1,7 +1,7 @@
 import { useState, useId } from "react";
-import type { InputProps } from "../../type/components";
-import EyeOnIcon from "../../assets/icons/eye-on.svg?react";
-import EyeOffIcon from "../../assets/icons/eye-off.svg?react";
+import type { InputProps } from "../../../type/components";
+import EyeOnIcon from "../../../assets/icons/eye-on.svg?react";
+import EyeOffIcon from "../../../assets/icons/eye-off.svg?react";
 import {
   wrapper,
   labelText,

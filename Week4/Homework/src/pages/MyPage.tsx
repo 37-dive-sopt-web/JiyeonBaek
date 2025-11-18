@@ -1,6 +1,6 @@
-import Header from "../components/main/Header";
-import MemberList from "../components/main/MemberList";
-import MyInfo from "../components/main/MyInfo";
+import Header from "../components/main/Header/Header";
+import MemberList from "../components/main/MemberList/MemberList";
+import MyInfo from "../components/main/MyInfo/MyInfo";
 import { useMemberList } from "../hooks/useMemberList";
 import { useMyPage } from "../hooks/useMyPage";
 import { LOADING_MESSAGES } from "../constants/messages";

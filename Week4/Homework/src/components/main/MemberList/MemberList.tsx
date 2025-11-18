@@ -1,6 +1,6 @@
-import type { MemberListProps } from "../../type/member";
-import Button from "../common/Button";
-import Input from "../common/Input";
+import type { MemberListProps } from "../../../type/member";
+import Button from "../../common/Button/Button";
+import Input from "../../common/Input/Input";
 import {
   memberListContainer,
   memberListForm,
@@ -10,8 +10,8 @@ import {
   memberListInfoValue,
   memberListTitle,
 } from "./MemberList.css";
-import { errorMessage } from "../../styles/message.css";
-import { LOADING_MESSAGES } from "../../constants/messages";
+import { errorMessage } from "../../../styles/message.css";
+import { LOADING_MESSAGES } from "../../../constants/messages";
 
 const MemberList = ({
   memberId,

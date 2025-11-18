@@ -1,6 +1,6 @@
-import Button from "../common/Button";
-import Input from "../common/Input";
-import { useMyInfoForm } from "../../hooks/useMyInfoForm";
+import Button from "../../common/Button/Button";
+import Input from "../../common/Input/Input";
+import { useMyInfoForm } from "../../../hooks/useMyInfoForm";
 import {
   myIdInfo,
   myIdInfoLabel,
@@ -9,9 +9,12 @@ import {
   myInfoForm,
   myInfoTitle,
 } from "./MyInfo.css";
-import { successMessage } from "../../styles/message.css";
-import type { MyInfoProps } from "../../type/myInfo";
-import { LOADING_MESSAGES, SUCCESS_MESSAGES } from "../../constants/messages";
+import { successMessage } from "../../../styles/message.css";
+import type { MyInfoProps } from "../../../type/myInfo";
+import {
+  LOADING_MESSAGES,
+  SUCCESS_MESSAGES,
+} from "../../../constants/messages";
 
 const MyInfo = ({
   id,
