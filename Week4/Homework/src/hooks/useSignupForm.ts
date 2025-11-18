@@ -1,0 +1,111 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { INITIAL_SIGNUP_FORM } from "../constants/signup";
+import type { SignupFormState } from "../type/auth";
+import {
+  isValidId,
+  isValidEmail,
+  getIdErrorMessage,
+  isValidPassword,
+  getPasswordErrorMessage,
+} from "../utils/validation";
+import { signup } from "../apis/auth";
+import { getErrorMessage } from "../utils/error";
+import { sanitizeAgeInput } from "../utils/form";
+import { SUCCESS_MESSAGES, ERROR_MESSAGES } from "../constants/messages";
+
+export const useSignupForm = () => {
+  const [step, setStep] = useState<1 | 2 | 3>(1);
+  const [form, setForm] = useState<SignupFormState>(INITIAL_SIGNUP_FORM);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    if (step === 1) {
+      navigate("/login");
+      return;
+    }
+
+    setStep((prev) => (prev > 1 ? ((prev - 1) as 1 | 2 | 3) : prev));
+  };
+
+  const handleNextStep = () => {
+    setStep((prev) => (prev < 3 ? ((prev + 1) as 1 | 2 | 3) : prev));
+  };
+
+  const handleChange =
+    (field: keyof SignupFormState) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      let value = e.target.value;
+
+      if (field === "age") {
+        value = sanitizeAgeInput(value);
+      }
+
+      setForm((prev) => ({
+        ...prev,
+        [field]: value,
+      }));
+    };
+
+  const isStep1Valid = isValidId(form.id);
+  const idErrorMessage = getIdErrorMessage(form.id);
+
+  const isStep2Valid =
+    isValidPassword(form.password) &&
+    form.passwordConfirm.length > 0 &&
+    form.password === form.passwordConfirm;
+
+  const passwordErrorMessage = getPasswordErrorMessage(form.password);
+
+  const isStep3Valid =
+    form.name.trim().length > 0 &&
+    isValidEmail(form.email) &&
+    form.age.trim().length > 0 &&
+    isStep2Valid;
+
+  const emailErrorMessage =
+    form.email.length > 0 && !isValidEmail(form.email)
+      ? ERROR_MESSAGES.INVALID_EMAIL
+      : undefined;
+
+  const handleSignup = async () => {
+    if (!isStep3Valid) return;
+
+    setIsLoading(true);
+
+    try {
+      const response = await signup({
+        username: form.id,
+        password: form.password,
+        name: form.name,
+        email: form.email,
+        age: Number(form.age),
+      });
+
+      alert(SUCCESS_MESSAGES.SIGNUP(response.data.name));
+      navigate("/login");
+    } catch (error: unknown) {
+      const errorMessage = getErrorMessage(error, ERROR_MESSAGES.SIGNUP_FAILED);
+      alert(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return {
+    step,
+    form,
+    isStep1Valid,
+    isStep2Valid,
+    isStep3Valid,
+    idErrorMessage,
+    passwordErrorMessage,
+    emailErrorMessage,
+    isLoading,
+    handleBack,
+    handleNextStep,
+    handleChange,
+    handleSignup,
+  };
+};
