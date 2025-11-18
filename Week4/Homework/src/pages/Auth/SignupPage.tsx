@@ -1,8 +1,8 @@
 import Step1 from "../../components/signup/Step1";
 import Step2 from "../../components/signup/Step2";
 import Step3 from "../../components/signup/Step3";
-import { link, title } from "../styles/typography.css";
-import BackIcon from "../assets/icons/arrow-back.svg?react";
+import { link, title } from "../../styles/typography.css";
+import BackIcon from "../../assets/icons/arrow-back.svg?react";
 import { useSignupForm } from "../../hooks/useSignupForm";
 import {
   authButtonContainer,
