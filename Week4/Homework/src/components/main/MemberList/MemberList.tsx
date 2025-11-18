@@ -9,7 +9,7 @@ import {
   memberListInfoLabel,
   memberListInfoValue,
   memberListTitle,
-} from "./MemberList.css";
+} from "./member-list.css";
 import { errorMessage } from "../../../styles/message.css";
 import { LOADING_MESSAGES } from "../../../constants/messages";
 

@@ -9,7 +9,7 @@ import {
   input,
   icon,
   error,
-} from "./Input.css";
+} from "./input.css";
 
 const Input = ({
   type,

@@ -7,7 +7,7 @@ import {
   authForm,
   authContainer,
   authLinkContainer,
-} from "./AuthPage.css";
+} from "./auth-page.css";
 import { errorMessage } from "../../styles/message.css";
 import { useLoginForm } from "../../hooks/useLoginForm";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";

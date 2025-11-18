@@ -1,7 +1,7 @@
 import Button from "../common/Button/Button";
 import Input from "../common/Input/Input";
 import type { Step1Props } from "../../type/auth";
-import { authForm } from "../../pages/Auth/AuthPage.css";
+import { authForm } from "../../pages/Auth/auth-page.css";
 import { createStepSubmitHandler } from "../../utils/step";
 
 const Step1 = ({

@@ -9,7 +9,7 @@ import {
   authContainer,
   authLinkContainer,
   backIcon,
-} from "./AuthPage.css";
+} from "./auth-page.css";
 import { Link } from "react-router-dom";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 

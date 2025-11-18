@@ -2,7 +2,7 @@ import Button from "../common/Button/Button";
 import Input from "../common/Input/Input";
 import type { Step2Props } from "../../type/auth";
 import { isPasswordMismatch } from "../../utils/validation";
-import { authForm } from "../../pages/Auth/AuthPage.css";
+import { authForm } from "../../pages/Auth/auth-page.css";
 import { createStepSubmitHandler } from "../../utils/step";
 
 const Step2 = ({

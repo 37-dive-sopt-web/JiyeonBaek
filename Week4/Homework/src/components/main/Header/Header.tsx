@@ -8,7 +8,7 @@ import {
   navBtnActive,
   menuToggle,
   headerRightSection,
-} from "./Header.css";
+} from "./header.css";
 import MenuIcon from "../../../assets/icons/menu.svg?react";
 import type { HeaderProps } from "../../../type/components";
 

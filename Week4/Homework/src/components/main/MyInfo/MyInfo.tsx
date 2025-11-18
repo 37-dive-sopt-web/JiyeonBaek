@@ -8,7 +8,7 @@ import {
   myInfoContainer,
   myInfoForm,
   myInfoTitle,
-} from "./MyInfo.css";
+} from "./my-info.css";
 import { successMessage } from "../../../styles/message.css";
 import type { MyInfoProps } from "../../../type/myInfo";
 import {
